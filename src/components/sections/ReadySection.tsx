@@ -153,7 +153,7 @@ export function ReadySection() {
                     }}
                     className="text-[#E5792B] font-bold"
                     style={{
-                      fontFamily: "var(--font-bogista), serif",
+                      fontFamily: "var(--font-caesar-dressing), serif",
                       fontWeight: 400,
                       fontSize: "clamp(2.5rem, 8vw, 5rem)",
                       lineHeight: "1.1",

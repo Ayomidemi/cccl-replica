@@ -24,11 +24,11 @@ export function PartnersSection() {
 
   return (
     <section className="relative w-full bg-white py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         {/* Top Section - Want more detailed info */}
         <div className="text-center sm:mb-16 mb-8">
           <h2
-            className="text-[#282828] sm:mb-8 mb-4 sm:text-4xl text-3xl"
+            className="text-[#282828] mb-4 sm:text-4xl text-3xl"
             style={{
               fontFamily: "var(--font-jost), sans-serif",
               fontWeight: 600,
@@ -70,43 +70,43 @@ export function PartnersSection() {
         {/* Contact Cards Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8 gap-4 mb-16">
           {/* Sponsorship Card */}
-          <div className="bg-[#F3F3F3] rounded-lg sm:p-8 p-4 text-center">
-            <div className="w-full mx-auto mb-6 flex items-start justify-start">
-              <Image
-                src="/images/black-bishop.png"
-                alt="Black Bishop"
-                width={70}
-                height={70}
-                className="w-16 h-16"
-              />
-            </div>
-            <h3
-              className="text-[#282828] sm:mb-6 mb-4 text-left sm:text-2xl text-xl"
-              style={{
-                fontFamily: "var(--font-jost), sans-serif",
-                fontWeight: 700,
-              }}
-            >
-              TO SPONSOR THE TOURNAMENT & LIBRARY PROJECT
-            </h3>
-            <div className="text-left flex flex-col gap-1">
-              <span
-                className="text-[#0F3D8D] block"
+          <div className="bg-[#F3F3F3] rounded-lg sm:p-6 p-4  flex flex-col justify-between">
+            <div className="flex flex-col gap-4">
+              <div className="w-full mx-auto flex items-start justify-start">
+                <Image
+                  src="/images/black-bishop.png"
+                  alt="Black Bishop"
+                  width={70}
+                  height={70}
+                  className="w-16 h-16"
+                />
+              </div>
+              <h3
+                className="text-[#282828] sm:mb-6 mb-4 text-left sm:text-[28px] text-xl"
                 style={{
                   fontFamily: "var(--font-jost), sans-serif",
-                  fontWeight: 400,
-                  fontSize: "14px",
+                  fontWeight: 600,
+                }}
+              >
+                TO SPONSOR THE TOURNAMENT & LIBRARY PROJECT
+              </h3>
+            </div>
+
+            <div className="text-left flex flex-col gap-0.5">
+              <span
+                className="text-[#0F3D8D] block font-normal text-base"
+                style={{
+                  fontFamily: "var(--font-jost), sans-serif",
                 }}
               >
                 Email:
               </span>
               <a
                 href="mailto:partnerships@tundeonakoyachessclub.com"
-                className="text-[#0F3D8D] hover:underline break-all"
+                className="text-[#0F3D8D] hover:underline break-all text-lg"
                 style={{
                   fontFamily: "var(--font-jost), sans-serif",
-                  fontWeight: 500,
-                  fontSize: "16px",
+                  fontWeight: 600,
                   wordBreak: "break-all",
                 }}
               >
@@ -116,43 +116,43 @@ export function PartnersSection() {
           </div>
 
           {/* General Contact Card */}
-          <div className="bg-[#F3F3F3] rounded-lg sm:p-8 p-4">
-            <div className="w-full mx-auto mb-6 flex items-start justify-start">
-              <Image
-                src="/images/black-knight.png"
-                alt="Black Knight"
-                width={70}
-                height={70}
-                className="w- h-16"
-              />
+          <div className="bg-[#F3F3F3] rounded-lg sm:p-6 p-4 flex flex-col justify-between">
+            <div className="flex flex-col gap-4">
+              <div className="w-full mx-auto flex items-start justify-start">
+                <Image
+                  src="/images/black-knight.png"
+                  alt="Black Knight"
+                  width={70}
+                  height={70}
+                  className="w- h-16"
+                />
+              </div>
+              <h3
+                className="text-[#282828] sm:mb-6 mb-4 text-left sm:text-[28px] text-xl"
+                style={{
+                  fontFamily: "var(--font-jost), sans-serif ",
+                  fontWeight: 600,
+                }}
+              >
+                TO GET IN TOUCH WITH US FOR MORE DETAILS
+              </h3>
             </div>
-            <h3
-              className="text-[#282828] sm:mb-6 mb-4 text-left sm:text-2xl text-xl"
-              style={{
-                fontFamily: "var(--font-jost), sans-serif ",
-                fontWeight: 700,
-              }}
-            >
-              TO GET IN TOUCH WITH US FOR MORE DETAILS
-            </h3>
-            <div className="text-left flex flex-col gap-1">
+
+            <div className="text-left flex flex-col gap-0.5">
               <span
-                className="text-[#0F3D8D] block"
+                className="text-[#0F3D8D] block font-normal text-base"
                 style={{
                   fontFamily: "var(--font-jost), sans-serif",
-                  fontWeight: 400,
-                  fontSize: "14px",
                 }}
               >
                 Contact:
               </span>
               <a
                 href="mailto:to@tundeonakoyachessclub.com"
-                className="text-[#0F3D8D] hover:underline break-all"
+                className="text-[#0F3D8D] hover:underline break-all text-lg"
                 style={{
                   fontFamily: "var(--font-jost), sans-serif",
-                  fontWeight: 500,
-                  fontSize: "16px",
+                  fontWeight: 600,
                   wordBreak: "break-all",
                 }}
               >
@@ -165,7 +165,7 @@ export function PartnersSection() {
         {/* Sponsors & Partners Header */}
         <div className="text-center mb-16">
           <h2
-            className="text-[#282828] sm:mb-8 mb-4 sm:text-4xl text-3xl"
+            className="text-[#282828]  mb-4 sm:text-4xl text-3xl"
             style={{
               fontFamily: "var(--font-jost), sans-serif",
               fontWeight: 600,

@@ -63,18 +63,27 @@ export function OrganizersSection() {
   ];
 
   return (
-    <section className="relative w-full min-h-screen bg-white py-12 md:py-20 overflow-hidden">
+    <section className="relative w-full min-h-screen bg-white overflow-hidden">
+      <div className="relative w-full my-16 py-16 overflow-hidden h-screen  flex flex-col items-center justify-center">
+        <Image
+          src="/images/vision-background.png"
+          alt="Vision Background"
+          fill
+          className="object-cover"
+        />
+      </div>
+
       {/* Header Section */}
       <div className="max-w-4xl mx-auto px-4 mb-8 md:mb-16">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-8">
           {/* Main Title */}
-          <h2 className="text-[#00432C] text-center font-jost font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+          <h2 className="text-[#00432C] text-center font-jost font-semibold text-[50px] md:text-[60px] lg:text-[80px] leading-tight">
             Meet The Tournament Organisers
           </h2>
 
           {/* Subtitle */}
           <p className="text-black text-center font-raleway font-normal text-lg md:text-2xl lg:text-3xl leading-tight tracking-tight">
-            Beyond Strategy. Building Legacy
+            Beyond Strategy, Building Legacy.
           </p>
         </div>
       </div>

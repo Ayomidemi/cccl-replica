@@ -2,7 +2,6 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Hero } from "@/components/sections/Hero";
 import { ReadySection } from "@/components/sections/ReadySection";
 import { ParticipationSection } from "@/components/sections/ParticipationSection";
-import { VisionSection } from "@/components/sections/VisionSection";
 import { OrganizersSection } from "@/components/sections/OrganizersSection";
 import { PlatformSection } from "@/components/sections/PlatformSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
@@ -17,9 +16,6 @@ export default function Home() {
         <ReadySection />
         <section id="participation">
           <ParticipationSection />
-        </section>
-        <section id="vision">
-          <VisionSection />
         </section>
         <section id="organizers">
           <OrganizersSection />

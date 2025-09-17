@@ -19,13 +19,18 @@ export function Hero() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4">
+      <div 
+        className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:gap-10 gap-8 mt-10"
+        style={{
+          background: "rgba(0, 0, 0, 0.45)"
+        }}
+      >
         {/* Tagline */}
-        <div className="text-center mb-6 md:mb-8">
+        <div className="text-center">
           <span
-            className="text-[#E5792B] text-[35px] leading-tight md:leading-[50px] tracking-[0.03em]"
+            className="text-[#E5792B] text-[35px] leading-tight tracking-[3%]"
             style={{
-              fontFamily: "var(--font-bogista), serif",
+              fontFamily: "var(--font-caesar-dressing), serif",
               fontWeight: 400,
             }}
           >
@@ -35,7 +40,7 @@ export function Hero() {
 
         {/* Main Headline */}
         <h1
-          className="text-center text-white px-4 text-[45px] sm:text-6xl md:text-[80px] max-w-7xl mx-auto leading-tight md:leading-[100px] tracking-normal"
+          className="text-center text-white px-4 text-[45px] sm:text-6xl md:text-[80px] max-w-7xl mx-auto leading-tight md:leading-[95px] tracking-normal"
           style={{
             fontFamily: "var(--font-jost), serif",
             fontWeight: 600,
@@ -49,7 +54,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2"
+          className="w-full flex justify-center items-center"
         >
           <motion.div
             animate={{ rotate: 360 }}
@@ -65,7 +70,7 @@ export function Hero() {
               alt="Scroll Down"
               width={150}
               height={150}
-              className="w-24 h-24 md:w-[150px] md:h-[150px]"
+              className="w-24 h-24 md:w-[188px] md:h-[188px]"
             />
           </motion.div>
         </motion.div>

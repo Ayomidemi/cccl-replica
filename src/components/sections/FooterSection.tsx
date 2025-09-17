@@ -9,6 +9,7 @@ import {
   SmallInstagram,
   SmallTwitter,
 } from "@/components/ui/Icons";
+import { ShakeHandIcon, TicketIcon } from "../ui/ChessIcons";
 
 export function FooterSection() {
   const [hoveredAvatar, setHoveredAvatar] = useState<number | null>(null);
@@ -39,7 +40,17 @@ export function FooterSection() {
           Ready to Make Your Move?
         </h2>
         <p className="text-white mb-6 md:mb-8 font-jost font-semibold text-xl md:text-3xl lg:text-5xl leading-tight">
-          Spots are limited. The clock ⏰ is ticking.
+          Spots are limited. The clock 
+          <span className="inline-block mx-2">
+            <Image
+              src="/images/videos/clock.gif"
+              alt="Clock ticking"
+              width={40}
+              height={40}
+              className="inline-block rounded-[12px] w-[67px] h-[49px]"
+            />
+          </span>
+           is ticking.
         </p>
 
         {/* Action Buttons */}
@@ -47,18 +58,20 @@ export function FooterSection() {
           <Button
             variant="primary"
             size="lg"
-            className="w-full sm:w-auto flex items-center justify-center gap-2"
+            className="w-full sm:w-auto flex items-center justify-center gap-1"
           >
-            <span className="text-lg">🤝</span>
+            <ShakeHandIcon size={20} color="white" />
             SIGN UP YOUR COMPANY
           </Button>
           <Button
             variant="outlineWhite"
             size="lg"
-            className="w-full sm:w-auto flex items-center justify-center gap-2"
+            className="w-full sm:w-auto flex items-center justify-center gap-1"
           >
-            <span className="text-lg">🎫</span>
-            BUY TICKETS
+            <TicketIcon size={19} color="white" />
+            <span className="mt-1">
+              BUY TICKETS
+            </span>
           </Button>
         </div>
       </div>
@@ -72,19 +85,18 @@ export function FooterSection() {
           {/* Left Side - Logos */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
             {/* CCCL Logo */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <span className="text-white font-caesar-dressing text-2xl">
                 CCCL
               </span>
               <div className="w-px h-8 bg-gray-400"></div>
-              <div className="flex items-center gap-3">
-                <div className="rounded-full flex items-center justify-center">
+              <div className="flex items-center">
+                <div className="rounded-full flex items-center justify-center relative w-22 h-9">
                   <Image
                     src="/images/logo-white-2.png"
                     alt="Chess in Slums Africa"
-                    width={32}
-                    height={32}
-                    className="w-20 h-8"
+                    fill
+                    className="object-contain"
                   />
                 </div>
               </div>
@@ -116,7 +128,7 @@ export function FooterSection() {
               <span className="text-[#8C8984] font-jost font-normal text-base">
                 Follow the journey:
               </span>
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <a
                   href="#"
                   className="text-white hover:text-[#E5792B] transition-colors duration-300"

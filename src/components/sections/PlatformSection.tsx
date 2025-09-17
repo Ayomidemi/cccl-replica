@@ -44,9 +44,9 @@ export function PlatformSection() {
   return (
     <section className="relative w-full bg-white py-8 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col items-center md:gap-4 gap-2 py-8 md:pb-20 bg-white">
+        <div className="flex flex-col items-center gap-2 py-8 md:pb-20 bg-white">
           <div className="relative">
-            <div className="sm:bg-black bg-transparent rounded-lg flex items-center justify-center w-full sm:w-72 lg:w-80 h-full sm:h-18 lg:h-20">
+            <div className="sm:bg-black bg-transparent flex items-center justify-center w-full sm:w-72 lg:w-80 h-full sm:h-18 lg:h-20">
               <span className="sm:text-white text-black font-jost font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">
                 A Platform
               </span>
@@ -54,7 +54,7 @@ export function PlatformSection() {
           </div>
 
           <div className="relative">
-            <div className="sm:bg-black bg-transparent rounded-lg flex items-center justify-center w-full sm:w-96 lg:w-[481px] h-full sm:h-18 lg:h-20">
+            <div className="sm:bg-black bg-transparent flex items-center justify-center w-full sm:w-96 lg:w-[481px] h-full sm:h-18 lg:h-20">
               <span className="sm:text-white text-black font-jost font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">
                 Like No Other
               </span>
@@ -72,7 +72,7 @@ export function PlatformSection() {
                   {/* Number */}
                   <div className="flex-shrink-0">
                     <span
-                      className="text-black sm:text-2xl text-xl"
+                      className="text-[#00432C] sm:text-2xl text-xl"
                       style={{
                         fontFamily: "var(--font-caesar-dressing), sans-serif",
                         fontWeight: 700,
@@ -86,7 +86,7 @@ export function PlatformSection() {
                   {/* Content */}
                   <div className="flex-1">
                     <h3
-                      className="text-black sm:mb-3 mb-2 sm:text-3xl text-xl"
+                      className="text-[#00432C] sm:mb-3 mb-2 sm:text-3xl text-xl"
                       style={{
                         fontFamily: "var(--font-jost), sans-serif",
                         fontWeight: 700,
@@ -122,7 +122,7 @@ export function PlatformSection() {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

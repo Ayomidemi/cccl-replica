@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Star } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/Button";
 import { steps, Step } from "@/components/data/steps";
+import { ShakeHandIcon } from "../ui/ChessIcons";
 
 // Step Preview Component
 const StepPreview = ({ step }: { step: Step }) => (
@@ -121,7 +122,12 @@ const StepPreview = ({ step }: { step: Step }) => (
           </div>
 
           {/* Register Button */}
-          <Button variant="secondary" size="lg">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="flex items-center justify-center gap-1"
+          >
+            <ShakeHandIcon size={20} color="white" />
             {step.content.buttonText}
           </Button>
         </>
@@ -206,7 +212,12 @@ const StepPreview = ({ step }: { step: Step }) => (
           </div>
 
           {/* Register Button */}
-          <Button variant="secondary" size="lg">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="flex items-center justify-center gap-1"
+          >
+            <ShakeHandIcon size={20} color="white" />
             {step.content.buttonText}
           </Button>
         </>
@@ -279,10 +290,10 @@ export function ParticipationSection() {
       </div>
 
       {/* Title Section */}
-      <div className="flex flex-col items-center md:gap-4 gap-2 py-8 md:py-16 bg-white">
+      <div className="flex flex-col items-center gap-2 py-8 md:py-16 bg-white">
         {/* Choose Your */}
         <div className="relative">
-          <div className="sm:bg-[#E5792B] bg-transparent rounded-lg flex items-center justify-center w-full sm:w-72 lg:w-80 h-full sm:h-18 lg:h-20">
+          <div className="sm:bg-[#E5792B] bg-transparent flex items-center justify-center w-full sm:w-72 lg:w-80 h-full sm:h-18 lg:h-20">
             <span className="sm:text-white text-[#E5792B] font-jost font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">
               Choose Your
             </span>
@@ -291,7 +302,7 @@ export function ParticipationSection() {
 
         {/* Level of Participation */}
         <div className="relative">
-          <div className="sm:bg-[#E5792B] bg-transparent rounded-lg flex items-center justify-center w-full sm:w-96 lg:w-[481px] h-full sm:h-18 lg:h-20">
+          <div className="sm:bg-[#E5792B] bg-transparent flex items-center justify-center w-full sm:w-96 lg:w-[481px] h-full sm:h-18 lg:h-20">
             <span className="sm:text-white text-[#E5792B] font-jost font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">
               Level of Participation
             </span>
