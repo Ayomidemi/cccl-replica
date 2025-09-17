@@ -20,13 +20,13 @@ export function Hero() {
 
       {/* Main Hero Content */}
       <div 
-        className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:gap-10 gap-8 mt-10"
+        className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:gap-10 gap-8"
         style={{
           background: "rgba(0, 0, 0, 0.45)"
         }}
       >
         {/* Tagline */}
-        <div className="text-center">
+        <div className="text-center mt-10">
           <span
             className="text-[#E5792B] text-[35px] leading-tight tracking-[3%]"
             style={{
