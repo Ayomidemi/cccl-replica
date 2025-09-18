@@ -81,7 +81,7 @@ const StepPreview = ({ step }: { step: Step }) => (
               (item: string, itemIndex: number) => (
                 <p
                   key={itemIndex}
-                  className={`text-[#282828] font-jost font-normal text-sm ${
+                  className={`text-[#282828] font-jost font-normal text-lg ${
                     itemIndex === 2 ? "leading-6" : "leading-7"
                   }`}
                 >
@@ -96,7 +96,7 @@ const StepPreview = ({ step }: { step: Step }) => (
             <h3 className="text-[#282828] font-jost font-extrabold text-lg leading-8">
               {step.content.feeSupports?.title}
             </h3>
-            <p className="text-[#282828] font-jost font-normal text-base leading-6">
+            <p className="text-[#282828] font-jost font-normal text-lg leading-6">
               {step.content.feeSupports?.description}
             </p>
           </div>
@@ -106,7 +106,7 @@ const StepPreview = ({ step }: { step: Step }) => (
             <h3 className="text-[#282828] font-jost font-extrabold text-lg leading-8">
               {step.content.liveArena?.title}
             </h3>
-            <p className="text-[#282828] font-jost font-normal text-base leading-6">
+            <p className="text-[#282828] font-jost font-normal text-lg leading-6">
               {step.content.liveArena?.description}
             </p>
           </div>
@@ -116,7 +116,7 @@ const StepPreview = ({ step }: { step: Step }) => (
             <h3 className="text-[#282828] font-jost font-bold text-lg leading-8">
               Participation Fee:
             </h3>
-            <p className="text-[#282828] font-jost font-normal text-base leading-6">
+            <p className="text-[#282828] font-jost font-normal text-lg leading-6">
               {step.content.participationFee}
             </p>
           </div>
@@ -136,16 +136,16 @@ const StepPreview = ({ step }: { step: Step }) => (
       {/* Step 2 Content */}
       {step.id === 2 && (
         <>
-          <p className="text-[#282828] font-jost font-normal text-base leading-6">
+          <p className="text-[#282828] font-jost font-normal text-lg leading-6">
             {step.content.statistic}
           </p>
 
-          <p className="text-[#282828] font-jost font-normal text-base leading-6">
+          <p className="text-[#282828] font-jost font-normal text-lg leading-6">
             {step.content.description}
           </p>
 
           <div className="space-y-2">
-            <p className="text-[#282828] font-jost font-bold text-base leading-6">
+            <p className="text-[#282828] font-jost font-bold text-lg leading-6">
               {step.content.callToAction}
             </p>
           </div>
@@ -155,7 +155,7 @@ const StepPreview = ({ step }: { step: Step }) => (
               (benefit: string, benefitIndex: number) => (
                 <p
                   key={benefitIndex}
-                  className="text-[#282828] font-jost font-normal text-sm leading-6"
+                  className="text-[#282828] font-jost font-normal text-lg leading-6"
                 >
                   {benefit}
                 </p>
@@ -188,7 +188,7 @@ const StepPreview = ({ step }: { step: Step }) => (
       {/* Step 3 Content */}
       {step.id === 3 && (
         <>
-          <p className="text-[#282828] font-jost font-normal text-base leading-6">
+          <p className="text-[#282828] font-jost font-normal text-lg leading-6">
             {step.content.description}
           </p>
 
@@ -202,7 +202,7 @@ const StepPreview = ({ step }: { step: Step }) => (
                 (benefit: string, benefitIndex: number) => (
                   <p
                     key={benefitIndex}
-                    className="text-[#282828] font-jost font-normal text-sm leading-6"
+                    className="text-[#282828] font-jost font-normal text-lg leading-6"
                   >
                     {benefit}
                   </p>

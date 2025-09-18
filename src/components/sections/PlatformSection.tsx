@@ -97,12 +97,10 @@ export function PlatformSection() {
                       {feature.title}
                     </h3>
                     <p
-                      className="text-black"
+                      className="text-black text-base sm:text-[20px]"
                       style={{
                         fontFamily: "var(--font-jost), sans-serif",
                         fontWeight: 400,
-                        fontSize: "14px",
-                        lineHeight: "140%",
                       }}
                     >
                       {feature.description}

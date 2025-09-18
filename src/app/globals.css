@@ -17,6 +17,7 @@
   --font-bogista: var(--font-bogista);
   --font-impact: var(--font-impact);
   --font-caesar-dressing: var(--font-caesar-dressing);
+  --font-candal: var(--font-candal);
 }
 
 @media (prefers-color-scheme: dark) {

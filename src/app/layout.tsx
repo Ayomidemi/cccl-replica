@@ -6,7 +6,8 @@ import {
   Jost,
   Raleway,
   Manrope,
-  Caesar_Dressing
+  Caesar_Dressing,
+  Candal,
 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -62,6 +63,12 @@ const caesarDressing = Caesar_Dressing({
   weight: ["400"],
 });
 
+const candal = Candal({
+  variable: "--font-candal",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
   title: "Chess in Slums | Corporate Chess Champions League",
   description:
@@ -81,7 +88,7 @@ export const metadata: Metadata = {
     "chess education",
     "social impact",
     "chess sponsorship",
-    "corporate chess league"
+    "corporate chess league",
   ],
   authors: [{ name: "Chess in Slums Africa" }],
   creator: "Chess in Slums Africa",
@@ -92,14 +99,15 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
     title: "Chess in Slums | Corporate Chess Champions League",
-    description: "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa.",
+    description:
+      "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa.",
     type: "website",
     locale: "en_NG",
     siteName: "Corporate Chess Champions League",
@@ -115,7 +123,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Chess in Slums | Corporate Chess Champions League",
-    description: "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa.",
+    description:
+      "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa.",
     images: ["/images/og-image.jpg"],
     creator: "@chessinslums",
   },
@@ -138,7 +147,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${jost.variable} ${raleway.variable} ${manrope.variable} ${bogista.variable} ${impact.variable} ${caesarDressing.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${jost.variable} ${raleway.variable} ${manrope.variable} ${bogista.variable} ${impact.variable} ${caesarDressing.variable} ${candal.variable} antialiased`}
       >
         {children}
       </body>
