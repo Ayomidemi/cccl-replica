@@ -1,7 +1,7 @@
 import {
-  ChessBishop,
-  ChessKnight,
-  ChessKing,
+  NavBishopIcon,
+  NavKnightIcon,
+  NavRookIcon,
 } from "@/components/ui/ChessIcons";
 
 export interface StepContent {
@@ -39,7 +39,7 @@ export const steps: Step[] = [
     title: "Step Into the Arena — Play with Your Own Corporate Team",
     image: "/images/participation-one.png",
     imageAlt: "Corporate Team Participation",
-    chessPiece: ChessBishop,
+    chessPiece: NavBishopIcon,
     content: {
       teamComposition: [
         "● Each company fields a 4-player team",
@@ -63,7 +63,7 @@ export const steps: Step[] = [
     title: "Build Beyond the Board — The Library Project",
     image: "/images/participation-two.png",
     imageAlt: "Library Project",
-    chessPiece: ChessKnight,
+    chessPiece: NavKnightIcon,
     content: {
       statistic: "75% of Nigerian children (ages 7–14) cannot read a simple sentence or solve basic math. — UNICEF, 2023",
       description: "This tournament powers a mission far beyond the checkered squares. Beyond competing as a team, your company can also sponsor the Library Project via partnership and sponsoring the tournament, helping to build safe learning spaces in underserved communities.",
@@ -84,7 +84,7 @@ export const steps: Step[] = [
     title: "Be a Partner— Without Playing",
     image: "/images/participation-three.png",
     imageAlt: "Partnership",
-    chessPiece: ChessKing,
+    chessPiece: NavRookIcon,
     content: {
       description: "Become a partner of the tournament and library initiative without fielding a team. As a non-playing sponsor,",
       benefitsTitle: "WHAT YOUR COMPANY BRAND GETS;",

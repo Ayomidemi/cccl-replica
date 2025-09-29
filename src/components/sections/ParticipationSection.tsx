@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Star } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/Button";
@@ -10,59 +10,15 @@ import { ShakeHandIcon } from "../ui/ChessIcons";
 
 // Step Preview Component
 const StepPreview = ({ step }: { step: Step }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.8, ease: "easeInOut" }}
-    className="w-full h-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mt-24 px-0 md:px-6 lg:px-0"
-  >
+  <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 bg-[#F4F0F0] p-8 rounded-[18px]">
     {/* Image Collage */}
-    <div className="relative w-full h-[542px] flex-1 md:flex hidden">
+    <div className="relative w-full h-[400px] md:h-[542px] flex-1">
       <Image
         src={step.image}
         alt={step.imageAlt}
         fill
-        className="object-cover"
+        className="object-cover rounded-lg"
       />
-    </div>
-
-    {/* Timeline */}
-    <div className="flex flex-row lg:flex-col items-center justify-center lg:justify-start gap-4 lg:gap-0">
-      {steps.map((timelineStep) => {
-        const TimelineChessPiece = timelineStep.chessPiece;
-        const isTimelineActive = timelineStep.id === step.id;
-
-        return (
-          <div
-            key={timelineStep.id}
-            className="flex flex-col lg:flex-col items-center"
-          >
-            <div
-              className={`w-px h-8 lg:h-20 border-l ${
-                isTimelineActive ? "border-[#E5792B]" : "border-[#AFAFAF]"
-              } hidden lg:block`}
-            ></div>
-            <div
-              className={`w-14 h-14 lg:w-[80px] lg:h-[80px] border rounded-full flex items-center justify-center ${
-                isTimelineActive ? "border-[#E5792B]" : "border-[#AFAFAF]"
-              }`}
-            >
-              <TimelineChessPiece
-                size={24}
-                color={isTimelineActive ? "#E5792B" : "#AFAFAF"}
-              />
-            </div>
-            <div
-              className={`w-px h-8 lg:h-20 border-l ${
-                isTimelineActive ? "border-[#E5792B]" : "border-[#AFAFAF]"
-              } hidden lg:block`}
-            ></div>
-          </div>
-        );
-      })}
-      {/* Bottom line */}
-      <div className="w-px h-8 lg:h-20 border-l border-[#AFAFAF] hidden lg:block"></div>
     </div>
 
     {/* Content */}
@@ -223,55 +179,30 @@ const StepPreview = ({ step }: { step: Step }) => (
         </>
       )}
     </div>
-  </motion.div>
+  </div>
 );
 
 export function ParticipationSection() {
   const [activeStep, setActiveStep] = useState(0);
-  const containerRef = useRef<HTMLElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  const nextStep = () => {
+    setActiveStep((prev) => (prev + 1) % steps.length);
+  };
 
-  useScroll().scrollY.onChange(() => {
-    if (!containerRef.current) return;
-
-    const container = containerRef.current;
-    const { top } = container.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-
-    const progress = Math.abs(top) / (container.offsetHeight - viewportHeight);
-
-    // Ensure first step is visible earlier and transitions are smoother
-    const adjustedProgress = Math.max(0, Math.min(1, progress * 1.1));
-    const stepIndex = Math.floor(adjustedProgress * (steps.length - 1));
-
-    setActiveStep(Math.max(0, Math.min(stepIndex, steps.length - 1)));
-  });
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.99, 1],
-    [1, 1, 1, 0]
-  );
+  const prevStep = () => {
+    setActiveStep((prev) => (prev - 1 + steps.length) % steps.length);
+  };
 
   // Scrolling text data
   const scrollingText = "Corporate Impact Through Chess";
 
   return (
     <section
-      ref={containerRef}
-      className="relative w-full px-0 py-0 bg-white"
-      style={{
-        minHeight: `${(steps.length + 1) * 100}vh`,
-      }}
+      className="relative w-full px-0 py-0 bg-white min-h-screen"
       data-section="participation"
     >
       {/* Scrolling Text Banner */}
-      <div className="relative w-full mt-8 h-28 md:h-32 overflow-hidden bg-white">
+      <div className="relative w-full my-16 h-28 md:h-32 overflow-hidden bg-white">
         <div
           className="absolute whitespace-nowrap flex items-center"
           style={{
@@ -290,7 +221,7 @@ export function ParticipationSection() {
       </div>
 
       {/* Title Section */}
-      <div className="flex flex-col items-center gap-2 py-8 md:py-16 bg-white">
+      <div className="flex flex-col items-center gap-2 py-8 bg-white">
         {/* Choose Your */}
         <div className="relative">
           <div className="sm:bg-[#E5792B] bg-transparent flex items-center justify-center w-full sm:w-72 lg:w-80 h-full sm:h-18 lg:h-20">
@@ -310,44 +241,94 @@ export function ParticipationSection() {
         </div>
       </div>
 
-      {/* Main Scroll Container */}
-      <motion.div
-        ref={sectionRef}
-        className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden bg-white"
-        style={{
-          opacity,
-        }}
-      >
-        <div className="w-full py-8 px-6 md:px-10 h-screen flex flex-col justify-center items-center">
-          <div className="relative z-10 w-full">
-            <div className="flex flex-col-reverse md:flex-col lg:flex-row justify-start md:justify-center items-center gap-16">
-              {/* Step Content */}
-              <div className="w-full relative flex">
-                <div className="w-full">
-                  {steps.map((step, index) => (
-                    <motion.div
-                      key={step.id}
-                      className="absolute top-0 left-0 w-full -translate-y-1/2"
-                      initial={{ opacity: 0, y: 50 }}
-                      animate={{
-                        opacity: activeStep === index ? 1 : 0,
-                        y: activeStep === index ? 0 : 50,
-                        zIndex: activeStep === index ? 10 : 0,
-                      }}
-                      transition={{
-                        duration: 1,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                    >
-                      <StepPreview step={step} />
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
+      {/* Main Content Container */}
+      <div className="w-full min-h-screen flex flex-col items-center justify-center bg-white py-8">
+        {/* Main Content Row */}
+        <div className="w-full max-w-7xl mx-auto flex items-center gap-4 md:gap-8 px-4 md:px-8">
+          {/* Left Indicator Box */}
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-11 h-[410px] bg-[#EEEEEE] rounded-[18px]" />
+          </div>
+
+          {/* Step Content */}
+          <div className="flex-1">
+            <motion.div
+              key={activeStep}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="w-full"
+            >
+              <StepPreview step={steps[activeStep]} />
+            </motion.div>
+          </div>
+
+          {/* Right Indicator Box */}
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-11 h-[410px] bg-[#EEEEEE] rounded-[18px]" />
           </div>
         </div>
-      </motion.div>
+
+        {/* Navigation Section */}
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center mt-8 px-4 md:px-8">
+          {/* Navigation Arrows */}
+          <div className="flex gap-3">
+            <button
+              onClick={prevStep}
+              className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+            >
+              <Image
+                src={"/images/arrow-left.png"}
+                alt="CCCL"
+                width={50}
+                height={50}
+                className="object-cover cursor-pointer w-12 h-12 md:w-13 md:h-13"
+              />
+            </button>
+
+            <div className="flex flex-row gap-2">
+              {steps.map((step, index) => {
+                const StepIcon = step.chessPiece;
+                const isActive = activeStep === index;
+
+                return (
+                  <button
+                    key={step.id}
+                    onClick={() => setActiveStep(index)}
+                    className="flex items-center justify-center transition-all duration-300 p-3 cursor-pointer hover:scale-110"
+                  >
+                    <StepIcon
+                      size={24}
+                      color={isActive ? "#E5792B" : "#AFAFAF"}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={nextStep}
+              className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+            >
+              <Image
+                src={"/images/arrow-left.png"}
+                alt="CCCL"
+                width={50}
+                height={50}
+                className="object-cover cursor-pointer w-12 h-12 md:w-13 md:h-13 transform scale-x-[-1]"
+              />
+            </button>
+          </div>
+
+          {/* Step Counter */}
+          <div className="text-black px-4 rounded-full text-sm font-medium">
+            <p className="text-[#282828] font-jost font-normal text-[15px] leading-6">
+              {activeStep + 1} / {steps.length}
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

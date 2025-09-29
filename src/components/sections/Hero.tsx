@@ -26,7 +26,7 @@ export function Hero() {
         }}
       >
         {/* Tagline */}
-        <div className="text-center mt-10">
+        <div className="text-center mt-[100px]">
           <span
             className="text-[#E5792B] text-[35px] leading-tight tracking-[3%]"
             style={{
