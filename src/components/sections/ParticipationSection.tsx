@@ -202,7 +202,7 @@ export function ParticipationSection() {
       data-section="participation"
     >
       {/* Scrolling Text Banner */}
-      <div className="relative w-full my-16 h-28 md:h-32 overflow-hidden bg-white">
+      <div className="relative w-full my-32 h-28 md:h-32 overflow-hidden bg-white">
         <div
           className="absolute whitespace-nowrap flex items-center"
           style={{
@@ -242,7 +242,7 @@ export function ParticipationSection() {
       </div>
 
       {/* Main Content Container */}
-      <div className="w-full min-h-screen flex flex-col items-center justify-center bg-white py-8">
+      <div className="w-full min-h-screen flex flex-col items-center bg-white py-8">
         {/* Main Content Row */}
         <div className="w-full max-w-7xl mx-auto flex items-center gap-4 md:gap-8 px-4 md:px-8">
           {/* Left Indicator Box */}

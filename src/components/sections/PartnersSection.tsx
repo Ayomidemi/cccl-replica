@@ -162,39 +162,39 @@ export function PartnersSection() {
           </div>
         </div>
 
-        {/* Sponsors & Partners Header */}
-        <div className="text-center mb-16">
-          <h2
-            className="text-[#282828]  mb-4 sm:text-4xl text-3xl"
-            style={{
-              fontFamily: "var(--font-jost), sans-serif",
-              fontWeight: 600,
-              lineHeight: "100%",
-            }}
-          >
-            Sponsors & Partners
-          </h2>
-        </div>
-
-        {/* Partners Grid */}
-        <div className="flex flex-wrap sm:gap-8 gap-4 items-center justify-center overflow-hidden">
-          {partners.map((partner, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center p-2 hover:scale-105 transition-transform duration-300"
+        {/* Sponsors & Partners */}
+        <div className="my-38">
+          <div className="text-center mb-12">
+            <h2
+              className="text-[#282828]  mb-4 sm:text-4xl text-3xl"
+              style={{
+                fontFamily: "var(--font-jost), sans-serif",
+                fontWeight: 600,
+                lineHeight: "100%",
+              }}
             >
-              {/* Logo */}
-              <div className="relative w-full h-full">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  width={120}
-                  height={80}
-                  className="object-contain w-full h-full"
-                />
+              Sponsors & Partners
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap sm:gap-8 gap-4 items-center justify-center overflow-hidden">
+            {partners.map((partner, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center p-2 hover:scale-105 transition-transform duration-300"
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={120}
+                    height={80}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

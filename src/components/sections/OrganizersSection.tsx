@@ -64,7 +64,7 @@ export function OrganizersSection() {
 
   return (
     <section className="relative w-full min-h-screen bg-white overflow-hidden">
-      <div className="relative w-full my-16 py-16 overflow-hidden h-screen  flex flex-col items-center justify-center">
+      <div className="relative w-full mt-16 mb-32 overflow-hidden h-screen  flex flex-col items-center justify-center">
         <Image
           src="/images/vision-background.png"
           alt="Vision Background"
@@ -77,7 +77,7 @@ export function OrganizersSection() {
       <div className="max-w-4xl mx-auto px-4 mb-8 md:mb-16">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-8">
           {/* Main Title */}
-          <h2 className="text-[#00432C] text-center font-jost font-semibold text-[50px] md:text-[60px] lg:text-[80px] leading-tight">
+          <h2 className="text-[#00432C] text-center font-jost font-semibold text-[50px] md:text-[60px] lg:text-[80px] leading-[85px]">
             Meet The Tournament Organisers
           </h2>
 

@@ -106,39 +106,74 @@ export function ReadySection() {
           "linear-gradient(122.05deg, #F6F6F6 -16.92%, #FEF1E1 118.08%)",
       }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src="/images/background-pattern.png"
-          alt="Background Pattern"
-          fill
-          className="object-cover opacity-20"
-        />
-      </div>
-
       {/* Radial Gradient Mask */}
-      <div
+      {/* <div
         className="absolute inset-0 w-full h-full"
         style={{
           background:
             "radial-gradient(52.19% 100% at 50% 0%, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 95.31%)",
         }}
-      />
+      /> */}
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-32">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 ">
         <motion.div
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           className="w-full max-w-6xl mx-auto text-center"
         >
-          {/* Call to Action */}
-          <motion.div variants={fadeInUp} className="mb-16">
-            <div className="flex items-center justify-center mb-8">
+          {/* Call to Action with Grid Background */}
+          <motion.div variants={fadeInUp} className="relative">
+            {/* Grid Pattern - Only behind call to action */}
+            <div className="absolute inset-0 w-screen h-full z-0" style={{ left: '50%', transform: 'translateX(-50%)' }}>
+              {/* Vertical Lines */}
+              <div className="absolute inset-0 w-full h-full">
+                {Array.from({ length: 21 }, (_, i) => (
+                  <div
+                    key={`vertical-${i}`}
+                    className="absolute top-0 h-full"
+                    style={{
+                      left: `${i * 96}px`,
+                      opacity: i === 0 || i === 20 ? 0 : 1,
+                      width: '1px',
+                      height: '100%',
+                      background: '#E9EAEB',
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Horizontal Lines */}
+              <div className="absolute inset-0 w-full h-full">
+                {Array.from({ length: 9 }, (_, i) => (
+                  <div
+                    key={`horizontal-${i}`}
+                    className="absolute left-0 w-full"
+                    style={{
+                      top: `${i * 96}px`,
+                      opacity: i === 0 || i === 8 ? 0 : 1,
+                      height: '1px',
+                      width: '100vw',
+                      background: '#E9EAEB',
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Fade overlay - radial gradient for left, bottom, right fade */}
+              <div 
+                className="absolute inset-0 w-full h-full"
+                style={{
+                  background: 'radial-gradient(ellipse 150% 200% at 50% 20%, transparent 0%, transparent 20%, rgba(233, 234, 235, 0.6) 50%, rgba(233, 234, 235, 0.3) 70%, transparent 100%)',
+                }}
+              />
+            </div>
+
+            <div className="flex items-center justify-center mb-8 relative z-10 pt-32">
               <ChessBishop />
             </div>
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-2 relative z-10 pb-16">
               {["ARE", "YOU", "READY", "to Make", "Your Move", "?"].map(
                 (word, index) => (
                   <motion.div
@@ -237,7 +272,7 @@ export function ReadySection() {
           </div>
 
           {/* Statistics Section */}
-          <div className="flex flex-col flex-wrap lg:flex-nowrap sm:flex-row justify-center items-center gap-6 sm:gap-8 lg:gap-16 max-w-7xl mx-auto">
+          <div className="flex flex-col flex-wrap lg:flex-nowrap sm:flex-row justify-center items-center gap-6 sm:gap-8 lg:gap-16 max-w-7xl mx-auto pb-32">
             {stats.map((stat) => (
               <StatItem key={stat.label} stat={stat} />
             ))}

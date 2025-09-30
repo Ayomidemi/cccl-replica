@@ -42,7 +42,7 @@ export function PlatformSection() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-8 md:py-20">
+    <section className="relative w-full bg-white py-8 md:py-32 mt-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center gap-2 py-8 md:pb-20 bg-white">
           <div className="relative">
