@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ChessKing,
   ChessKnight,
@@ -25,19 +24,19 @@ export function Navigation() {
     {
       name: "PARTICIPANTS",
       icon: ChessKnight,
-      href: "#participants",
+      href: "/participants",
       active: false,
     },
     {
       name: "LIVE STREAM",
       icon: ChessQueen,
-      href: "#stream",
+      href: "/live-stream",
       active: false,
     },
     {
       name: "BUY TICKETS",
       icon: TicketIcon,
-      href: "#tickets",
+      href: "/tickets",
       active: false,
     },
   ];
@@ -60,6 +59,16 @@ export function Navigation() {
     },
     { icon: Mail, href: "mailto:info@chessinslums.org", target: "_blank" },
   ];
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    navItems.forEach((item) => {
+      if (item.href === pathname) {
+        setActiveNav(item.name || "HOME");
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -117,10 +126,10 @@ export function Navigation() {
         {isOpen && (
           <>
             {/* Full screen background overlay */}
-            <div 
+            <div
               className="fixed inset-0 w-screen h-screen z-30 cursor-pointer"
               style={{
-                background: "rgba(0, 0, 0, 0.45)"
+                background: "rgba(0, 0, 0, 0.45)",
               }}
               onClick={() => setIsOpen(false)}
             />
@@ -132,103 +141,103 @@ export function Navigation() {
               className="fixed left-4 right-4 z-40 w-auto mt-20 top-[20px] sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:max-w-[522px] sm:mx-4 sm:w-full"
             >
               <div className="bg-white rounded-2xl md:px-8 md:py-8 px-4 py-4 shadow-2xl">
-              {/* Navigation Items */}
-              <div className="flex flex-col items-center space-y-8">
-                {navItems.map((item, index) => {
-                  const IconComponent = item.icon;
-                  const isActive = activeNav === item.name;
+                {/* Navigation Items */}
+                <div className="flex flex-col items-center space-y-8">
+                  {navItems.map((item, index) => {
+                    const IconComponent = item.icon;
+                    const isActive = activeNav === item.name;
 
-                  return (
-                    <motion.a
-                      key={item.name}
-                      href={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 + 0.2 }}
-                      onClick={() => {
-                        setActiveNav(item.name);
-                        setIsOpen(false);
-                      }}
-                      className="flex items-center gap-2 cursor-pointer group py-2 my-3 md:text-[30px] text-[20px]"
-                    >
-                      <IconComponent
-                        size={25}
-                        color={isActive ? "#FF9000" : "#282828"}
-                      />
-                      <span
-                        className={`transition-colors duration-200 ${
-                          isActive ? "text-[#FF9000]" : "text-[#282828]"
-                        }`}
-                        style={{
-                          fontFamily: "var(--font-impact), sans-serif",
-                          lineHeight: "25px",
-                          letterSpacing: "0.02em",
-                          fontWeight: 600,
+                    return (
+                      <motion.a
+                        key={item.name}
+                        href={item.href}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 + 0.2 }}
+                        onClick={() => {
+                          setActiveNav(item.name);
+                          setIsOpen(false);
                         }}
+                        className="flex items-center gap-2 cursor-pointer group py-2 my-3 md:text-[30px] text-[20px]"
                       >
-                        {item.name}
-                      </span>
-                    </motion.a>
-                  );
-                })}
-              </div>
+                        <IconComponent
+                          size={25}
+                          color={isActive ? "#FF9000" : "#282828"}
+                        />
+                        <span
+                          className={`transition-colors duration-200 ${
+                            isActive ? "text-[#FF9000]" : "text-[#282828]"
+                          }`}
+                          style={{
+                            fontFamily: "var(--font-impact), sans-serif",
+                            lineHeight: "25px",
+                            letterSpacing: "0.02em",
+                            fontWeight: 600,
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </motion.a>
+                    );
+                  })}
+                </div>
 
-              {/* Register Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="flex justify-center mt-8"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-[#292929] rounded-full px-8 sm:py-4 py-2 cursor-pointer sm:w-[70%] w-[80%]"
+                {/* Register Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  className="flex justify-center mt-8"
                 >
-                  <span
-                    className="text-white"
-                    style={{
-                      fontFamily: "var(--font-impact), sans-serif",
-                      fontSize: "18px",
-                      lineHeight: "37px",
-                      textAlign: "center",
-                      letterSpacing: "0.05em",
-                      fontWeight: 600,
-                    }}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-[#292929] rounded-full px-8 sm:py-4 py-2 cursor-pointer sm:w-[70%] w-[80%]"
                   >
-                    REGISTER
-                  </span>
-                </motion.button>
-              </motion.div>
-
-              {/* Social Icons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="flex justify-center items-center gap-4 mt-8"
-              >
-                {socialIcons.map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      target={social.target}
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="flex items-center justify-center cursor-pointer"
+                    <span
+                      className="text-white"
+                      style={{
+                        fontFamily: "var(--font-impact), sans-serif",
+                        fontSize: "18px",
+                        lineHeight: "37px",
+                        textAlign: "center",
+                        letterSpacing: "0.05em",
+                        fontWeight: 600,
+                      }}
                     >
-                      <IconComponent size={30} color="#FF9000" />
-                      {index < socialIcons.length - 1 && (
-                        <div className="w-0.5 h-8 bg-[#F7EAEA] ml-4" />
-                      )}
-                    </motion.a>
-                  );
-                })}
-              </motion.div>
-            </div>
+                      REGISTER
+                    </span>
+                  </motion.button>
+                </motion.div>
+
+                {/* Social Icons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex justify-center items-center gap-4 mt-8"
+                >
+                  {socialIcons.map((social, index) => {
+                    const IconComponent = social.icon;
+                    return (
+                      <motion.a
+                        key={index}
+                        href={social.href}
+                        target={social.target}
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="flex items-center justify-center cursor-pointer"
+                      >
+                        <IconComponent size={30} color="#FF9000" />
+                        {index < socialIcons.length - 1 && (
+                          <div className="w-0.5 h-8 bg-[#F7EAEA] ml-4" />
+                        )}
+                      </motion.a>
+                    );
+                  })}
+                </motion.div>
+              </div>
             </motion.div>
           </>
         )}

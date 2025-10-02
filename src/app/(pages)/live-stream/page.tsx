@@ -6,9 +6,8 @@ import {
   ChessKnight,
   ChessQueen,
 } from "@/components/ui/ChessIcons";
-import { Navigation } from "@/components/layout/Navigation";
 
-export default function NotFound() {
+export default function LiveStream() {
   const chessPieces = [
     { icon: ChessBishop, name: "Pawn" },
     { icon: ChessKnight, name: "Knight" },
@@ -17,8 +16,6 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      <Navigation />
-
       <div className="pt-24 px-4 flex flex-col items-center justify-center min-h-screen">
         <div className="text-center mb-16 max-w-2xl">
           <p

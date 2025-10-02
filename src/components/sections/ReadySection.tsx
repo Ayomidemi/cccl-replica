@@ -7,8 +7,7 @@ import { fadeInUp, staggerContainer } from "@/lib/utils";
 import { ChessBishop } from "@/components/ui/ChessIcons";
 import { useRef, useEffect, useState } from "react";
 
-// Custom hook for counting animation
-function useCountUp(end: number, duration: number = 2000, start: number = 0) {
+function useCountUp(end: number, duration: number = 1500, start: number = 0) {
   const [count, setCount] = useState(start);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -22,10 +21,10 @@ function useCountUp(end: number, duration: number = 2000, start: number = 0) {
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      
+
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const currentCount = Math.floor(easeOutQuart * (end - start) + start);
-      
+
       setCount(currentCount);
 
       if (progress < 1) {
@@ -46,9 +45,13 @@ function useCountUp(end: number, duration: number = 2000, start: number = 0) {
 }
 
 // Individual stat component to fix hook usage
-function StatItem({ stat }: { stat: { number: number; label: string; suffix: string; prefix: string } }) {
-  const { count, ref } = useCountUp(stat.number, 2000);
-  
+function StatItem({
+  stat,
+}: {
+  stat: { number: number; label: string; suffix: string; prefix: string };
+}) {
+  const { count, ref } = useCountUp(stat.number, 1500);
+
   return (
     <div
       ref={ref}
@@ -68,7 +71,9 @@ function StatItem({ stat }: { stat: { number: number; label: string; suffix: str
             WebkitTextFillColor: "transparent",
           }}
         >
-          {stat.prefix}{count}{stat.suffix}
+          {stat.prefix}
+          {count}
+          {stat.suffix}
         </div>
       </div>
 
@@ -94,7 +99,12 @@ export function ReadySection() {
   const stats = [
     { number: 20, label: "PARTICIPATING COMPANIES", suffix: "", prefix: "" },
     { number: 1, label: "TEAM CHAMPION", suffix: "", prefix: "" },
-    { number: 60, label: "ONLINE & PHYSICAL INTERACTION", suffix: "k", prefix: "+" },
+    {
+      number: 60,
+      label: "ONLINE & PHYSICAL INTERACTION",
+      suffix: "k",
+      prefix: "+",
+    },
     { number: 20, label: "PRIZE POOL", suffix: "M", prefix: "" },
   ];
 
@@ -106,16 +116,6 @@ export function ReadySection() {
           "linear-gradient(122.05deg, #F6F6F6 -16.92%, #FEF1E1 118.08%)",
       }}
     >
-      {/* Radial Gradient Mask */}
-      {/* <div
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background:
-            "radial-gradient(52.19% 100% at 50% 0%, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 95.31%)",
-        }}
-      /> */}
-
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 ">
         <motion.div
           variants={staggerContainer}
@@ -125,47 +125,18 @@ export function ReadySection() {
         >
           {/* Call to Action with Grid Background */}
           <motion.div variants={fadeInUp} className="relative">
-            {/* Grid Pattern - Only behind call to action */}
-            <div className="absolute inset-0 w-screen h-full z-0" style={{ left: '50%', transform: 'translateX(-50%)' }}>
-              {/* Vertical Lines */}
-              <div className="absolute inset-0 w-full h-full">
-                {Array.from({ length: 21 }, (_, i) => (
-                  <div
-                    key={`vertical-${i}`}
-                    className="absolute top-0 h-full"
-                    style={{
-                      left: `${i * 96}px`,
-                      opacity: i === 0 || i === 20 ? 0 : 1,
-                      width: '1px',
-                      height: '100%',
-                      background: '#E9EAEB',
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Horizontal Lines */}
-              <div className="absolute inset-0 w-full h-full">
-                {Array.from({ length: 9 }, (_, i) => (
-                  <div
-                    key={`horizontal-${i}`}
-                    className="absolute left-0 w-full"
-                    style={{
-                      top: `${i * 96}px`,
-                      opacity: i === 0 || i === 8 ? 0 : 1,
-                      height: '1px',
-                      width: '100vw',
-                      background: '#E9EAEB',
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Fade overlay - radial gradient for left, bottom, right fade */}
-              <div 
-                className="absolute inset-0 w-full h-full"
+            <div
+              className="absolute inset-0 w-screen h-full z-0"
+              style={{ left: "50%", transform: "translateX(-50%)" }}
+            >
+              <Image
+                src="/images/background-pattern.png"
+                alt="Background Pattern"
+                fill
+                className="object-cover"
                 style={{
-                  background: 'radial-gradient(ellipse 150% 200% at 50% 20%, transparent 0%, transparent 20%, rgba(233, 234, 235, 0.6) 50%, rgba(233, 234, 235, 0.3) 70%, transparent 100%)',
+                  width: "100%",
+                  height: "100%",
                 }}
               />
             </div>
@@ -207,7 +178,6 @@ export function ReadySection() {
             <div className="relative max-w-5xl sm:h-full h-[400px] mx-auto">
               {/* Video Thumbnail */}
               <div className="relative aspect-video rounded-2xl h-full w-full overflow-hidden shadow-2xl">
-                {/* Video Background Image */}
                 <Image
                   src="/images/video-bg.png"
                   alt="Chess in Slums Video Background"
@@ -215,10 +185,8 @@ export function ReadySection() {
                   className="object-cover"
                 />
 
-                {/* Dark Overlay for Text Readability */}
                 <div className="absolute inset-0 bg-black/20" />
 
-                {/* Chess in Slums Logo */}
                 <div className="absolute sm:top-6 top-4 sm:left-6 left-4">
                   <Image
                     src="/images/logo-white.png"
@@ -229,7 +197,6 @@ export function ReadySection() {
                   />
                 </div>
 
-                {/* Text Overlay */}
                 <div className="absolute inset-0 flex sm:flex-col flex-col-reverse items-center justify-center text-center px-8">
                   <div className="text-white">
                     <p
@@ -253,7 +220,6 @@ export function ReadySection() {
                     </p>
                   </div>
 
-                  {/* Play Button */}
                   <motion.a
                     href="https://www.youtube.com/watch?v=yXvyJDqqQec"
                     target="_blank"
@@ -263,7 +229,10 @@ export function ReadySection() {
                     className="inline-flex items-center justify-center"
                   >
                     <div className="sm:w-20 sm:h-20 sm:mb-0 mb-4 w-12 h-12 mt-8 bg-gradient-to-r from-[#E5792B] to-[#FFA500] rounded-full flex items-center justify-center shadow-2xl">
-                      <Play className="sm:w-8 sm:h-8 w-6 h-6 text-white ml-1" fill="white" />
+                      <Play
+                        className="sm:w-8 sm:h-8 w-6 h-6 text-white ml-1"
+                        fill="white"
+                      />
                     </div>
                   </motion.a>
                 </div>
@@ -271,7 +240,6 @@ export function ReadySection() {
             </div>
           </div>
 
-          {/* Statistics Section */}
           <div className="flex flex-col flex-wrap lg:flex-nowrap sm:flex-row justify-center items-center gap-6 sm:gap-8 lg:gap-16 max-w-7xl mx-auto pb-32">
             {stats.map((stat) => (
               <StatItem key={stat.label} stat={stat} />
