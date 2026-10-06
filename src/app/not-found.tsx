@@ -1,81 +1,88 @@
-"use client";
+import Link from "next/link";
+import { SiteNav } from "@/components/layout/SiteNav";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { BePartSection } from "@/components/sections/BePartSection";
+import { SocialsSection } from "@/components/sections/SocialsSection";
+import { ColorStripes } from "@/components/sections/ColorStripes";
+import { OffsetButton, ButtonArrow } from "@/components/ui/OffsetButton";
 
-import React from "react";
-import {
-  ChessBishop,
-  ChessKnight,
-  ChessQueen,
-} from "@/components/ui/ChessIcons";
-import { Navigation } from "@/components/layout/Navigation";
+const DIN = "'DIN Next W1G', sans-serif";
+const JOST = "var(--font-jost), 'Jost', sans-serif";
+const PATRICK = "'Patrick Hand SC', cursive";
 
 export default function NotFound() {
-  const chessPieces = [
-    { icon: ChessBishop, name: "Pawn" },
-    { icon: ChessKnight, name: "Knight" },
-    { icon: ChessQueen, name: "Rook" },
-  ];
-
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      <Navigation />
+    <div className="overflow-x-hidden bg-[#F9F4ED] text-[#282828]">
+      <SiteNav tone="light" />
 
-      <div className="pt-24 px-4 flex flex-col items-center justify-center min-h-screen">
-        <div className="text-center mb-16 max-w-2xl">
-          <p
-            className="text-[18px] md:text-[26px] text-white leading-relaxed"
+      <main className="mx-auto flex min-h-[70svh] w-full max-w-[900px] flex-col items-center justify-center px-4 pt-32 pb-20 text-center sm:px-8 lg:pt-40 lg:pb-28">
+        <p
+          className="uppercase"
+          style={{
+            fontFamily: PATRICK,
+            fontWeight: 400,
+            fontSize: "clamp(18px, 2vw, 24px)",
+            lineHeight: 1.2,
+            color: "#087361",
+          }}
+        >
+          Wrong square
+        </p>
+        <h1
+          className="mt-3"
+          style={{
+            fontFamily: DIN,
+            fontWeight: 900,
+            fontSize: "clamp(72px, 14vw, 160px)",
+            lineHeight: 0.95,
+            letterSpacing: "0.04em",
+            color: "#282828",
+          }}
+        >
+          404
+        </h1>
+        <p
+          className="mt-6 max-w-[520px]"
+          style={{
+            fontFamily: DIN,
+            fontWeight: 400,
+            fontSize: "clamp(18px, 2vw, 24px)",
+            lineHeight: 1.5,
+            color: "#282828",
+          }}
+        >
+          This page isn&apos;t on the board. Head home or learn more about the
+          festival while you&apos;re here.
+        </p>
+        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+          <OffsetButton href="/" className="w-[200px]" face="#EB6601" shadow="#14DDBD">
+            <span
+              className="whitespace-nowrap text-[16px]"
+              style={{ fontFamily: JOST, fontWeight: 700, lineHeight: "18px" }}
+            >
+              Back Home
+            </span>
+            <ButtonArrow />
+          </OffsetButton>
+          <Link
+            href="/about"
+            className="inline-flex h-[52px] items-center justify-center px-2 underline-offset-4 transition-opacity hover:opacity-70"
             style={{
-              fontFamily: "var(--font-raleway), serif",
+              fontFamily: JOST,
+              fontWeight: 600,
+              fontSize: "16px",
+              color: "#282828",
             }}
           >
-            Sign up and Registration for this tournament is still ongoing. The
-            team and player reveal will be featured on this page before the
-            tournament begin.
-          </p>
+            About LICF
+          </Link>
         </div>
+      </main>
 
-        <div className="relative w-full max-w-6xl mx-auto">
-          <div className="relative flex gap-8 md:gap-12 lg:gap-24">
-            {chessPieces.map((piece, index) => {
-              const IconComponent = piece.icon;
-
-              return (
-                <div
-                  key={index}
-                  className={`relative transition-all duration-500 transform bg-white rounded-[18px] ${
-                    index === 0
-                      ? "-rotate-[3.32deg] scale-105"
-                      : index === 2
-                      ? "rotate-[4.64deg] scale-105"
-                      : "-rotate-[0.64deg] scale-105"
-                  }`}
-                >
-                  <div
-                    className="rounded-[18px] border-r-[7px] border-b-[7px] border-[#E5792B] shadow-2xl hover:shadow-3xl transition-all duration-300 min-w-[320px] min-h-[350px] relative overflow-hidden"
-                    style={{
-                      backgroundImage: "url('/images/chessboard.png')",
-                      backgroundSize: "contain",
-                      backgroundPosition: "bottom",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
-                    <div
-                      className={`flex flex-col absolute top-0 left-0 w-full h-full  p-8 bg-white/90`}
-                    >
-                      <div className="mb-6 text-[#E5792B]">
-                        <IconComponent size={60} color="#E5792B" />
-                      </div>
-
-                      <p className="text-black font-jost text-[18px] leading-[28px] max-w-1/2">
-                        Hover to start a Conversation
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <BePartSection />
+      <SocialsSection />
+      <ColorStripes />
+      <SiteFooter />
     </div>
   );
 }

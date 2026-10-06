@@ -10,6 +10,14 @@ import {
   Candal,
 } from "next/font/google";
 import localFont from "next/font/local";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  CONTACT_EMAIL,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,6 +65,12 @@ const impact = localFont({
   display: "swap",
 });
 
+const chunko = localFont({
+  src: "../assets/fonts/ChunkoBoldDemo.ttf",
+  variable: "--font-chunko",
+  display: "swap",
+});
+
 const caesarDressing = Caesar_Dressing({
   variable: "--font-caesar-dressing",
   subsets: ["latin"],
@@ -70,29 +84,17 @@ const candal = Candal({
 });
 
 export const metadata: Metadata = {
-  title: "Chess in Slums | Corporate Chess Champions League",
-  description:
-    "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa. Register your company team today!",
-  keywords: [
-    "corporate chess",
-    "chess tournament",
-    "nigeria chess",
-    "corporate league",
-    "chess champions",
-    "chess in slums",
-    "tunde onakoya",
-    "corporate competition",
-    "chess nigeria",
-    "business chess",
-    "corporate team building",
-    "chess education",
-    "social impact",
-    "chess sponsorship",
-    "corporate chess league",
-  ],
-  authors: [{ name: "Chess in Slums Africa" }],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | Chess in Slums Africa`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: "Chess in Slums Africa", url: "https://chessinslums.org" }],
   creator: "Chess in Slums Africa",
   publisher: "Chess in Slums Africa",
+  applicationName: SITE_NAME,
   robots: {
     index: true,
     follow: true,
@@ -105,37 +107,35 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Chess in Slums | Corporate Chess Champions League",
-    description:
-      "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa.",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     type: "website",
     locale: "en_NG",
-    siteName: "Corporate Chess Champions League",
+    siteName: SITE_NAME,
+    url: SITE_URL,
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/prelanding.jpg",
         width: 1200,
         height: 630,
-        alt: "Corporate Chess Champions League - Nigeria's Premier Corporate Chess Tournament",
+        alt: `${SITE_NAME} — Lagos, Nigeria`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chess in Slums | Corporate Chess Champions League",
-    description:
-      "Join Nigeria's first Corporate Chess Champions League. Corporate teams compete while supporting education through Chess in Slums Africa.",
-    images: ["/images/og-image.jpg"],
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: ["/images/prelanding.jpg"],
     creator: "@chessinslums",
+    site: "@chessinslums",
   },
   alternates: {
-    canonical: "https://cccl.chessinslums.org",
+    canonical: SITE_URL,
   },
-  category: "sports",
-  classification: "Chess Tournament",
+  category: "events",
   other: {
-    "contact:email": "info@chessinslums.org",
-    "contact:phone": "+234-XXX-XXX-XXXX",
+    "contact:email": CONTACT_EMAIL,
   },
 };
 
@@ -147,8 +147,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${jost.variable} ${raleway.variable} ${manrope.variable} ${bogista.variable} ${impact.variable} ${caesarDressing.variable} ${candal.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${jost.variable} ${raleway.variable} ${manrope.variable} ${bogista.variable} ${impact.variable} ${chunko.variable} ${caesarDressing.variable} ${candal.variable} antialiased`}
       >
+        <JsonLd />
         {children}
       </body>
     </html>

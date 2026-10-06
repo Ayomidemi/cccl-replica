@@ -1,123 +1,108 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-
 interface SplashScreenProps {
   onEnter: () => void;
 }
 
-export function SplashScreen({ onEnter }: SplashScreenProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
+function CornerBrackets() {
   return (
-    <section className="relative w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden px-4">
-      <div className="flex flex-col items-center justify-center max-w-4xl mx-auto text-center">
-        {/* TOCC Title */}
-        <h1 
-          className="text-white font-candal text-6xl sm:text-8xl md:text-9xl lg:text-[250px] leading-tight m-0 p-0"
+    <div className="pointer-events-none absolute inset-0" aria-hidden>
+      {/* Vector 40 — top-left */}
+      <span className="absolute left-0 top-0 h-[8px] w-[8px] border-l border-t border-white" />
+      {/* Vector 41 — top-right */}
+      <span className="absolute right-0 top-0 h-[8px] w-[8px] border-r border-t border-white" />
+      {/* Vector 42 — bottom-left */}
+      <span className="absolute bottom-0 left-0 h-[8px] w-[8px] border-b border-l border-white" />
+      {/* Vector 43 — bottom-right */}
+      <span className="absolute bottom-0 right-0 h-[8px] w-[8px] border-b border-r border-white" />
+    </div>
+  );
+}
+
+export function SplashScreen({ onEnter }: SplashScreenProps) {
+  return (
+    <section className="relative h-dvh w-full overflow-hidden">
+      {/* PRE-LANDING PAGE — background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/images/prelanding.jpg)" }}
+      />
+
+      {/* DASHBOARD — rgba(0, 0, 0, 0.85) */}
+      <div className="absolute inset-0 bg-[rgba(0,0,0,0.85)]" />
+
+      {/* Centered content (middle on all breakpoints, especially mobile) */}
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-3 sm:px-5 lg:px-8">
+        {/*
+          LAGOS, ARE YOU READY?
+          font-family: 'Chunko Bold Demo'
+          font-weight: 400
+          font-size: 100px
+          line-height: 130px
+          letter-spacing: 0.04em
+          text-align: center
+          color: #FFFFFF
+          Figma width was 883px — widened on web so line 2 stays one line
+        */}
+        <h1
+          className="text-center text-white"
           style={{
-            fontFamily: "var(--font-candal), serif",
+            fontFamily: "'Chunko Bold Demo', sans-serif",
+            fontStyle: "normal",
             fontWeight: 400,
+            fontSize: "clamp(2.15rem, 8.5vw, 100px)",
+            lineHeight: 1.3,
+            letterSpacing: "0.04em",
+            width: "min(100%, 1200px)",
           }}
         >
-          TOCC
+          <span className="block whitespace-nowrap">LAGOS,</span>
+          <span className="block whitespace-nowrap">ARE YOU READY?</span>
         </h1>
 
-        {/* PRESENTS TO YOU */}
-        <p 
-          className="text-white font-sf-pro text-lg sm:text-xl md:text-2xl lg:text-3xl leading-[60px] tracking-[0.9em] m-0 p-0"
-          style={{
-            fontFamily: "SF Pro, sans-serif",
-            fontWeight: 510,
-          }}
-        >
-          PRESENTS TO YOU
-        </p>
-
-        {/* CTA Button */}
-        <motion.button
-          className="relative border mt-16 cursor-pointer border-[#E5792B] rounded-[30px] flex items-center justify-center gap-1.5 px-8 py-4 bg-transparent hover:bg-white hover:border-transparent transition-all duration-300 overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+        {/*
+          Component 97 / CTA
+          width: 290px; height: 57px
+          fill: #EB6601
+          button text: Impact / 17px / letter-spacing 0.03em / #FFFFFF
+        */}
+        <button
+          type="button"
           onClick={onEnter}
+          className="relative mt-8 h-[57px] w-[min(290px,85vw)] shrink-0 cursor-pointer sm:mt-10 md:mt-12"
+          aria-label="Let's make history"
         >
-          {/* Grid Icon Container */}
-          <div className="relative overflow-hidden w-4 h-4 flex items-center justify-center">
-            {/* Main Grid Icon */}
-            <motion.div 
-              className="w-4 h-4 flex flex-col gap-0 opacity-100"
-              animate={{
-                y: isHovered ? -16 : 0,
-                opacity: isHovered ? 0 : 1
-              }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            >
-              <div className="flex gap-0">
-                <div className="w-2 h-2 bg-[#F9F6F6]" />
-                <div className="w-2 h-2 bg-[#828282]" />
-              </div>
-              <div className="flex gap-0">
-                <div className="w-2 h-2 bg-[#828282]" />
-                <div className="w-2 h-2 bg-[#F9F6F6]" />
-              </div>
-            </motion.div>
-            
-            {/* Hidden Grid Icon that slides in from below */}
-            <motion.div 
-              className="absolute w-4 h-4 flex flex-col gap-0 opacity-0"
-              animate={{
-                y: isHovered ? 0 : 16,
-                opacity: isHovered ? 1 : 0
-              }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            >
-              <div className="flex gap-0">
-                <div className="w-2 h-2 bg-[#828282]" />
-                <div className="w-2 h-2 bg-[#F9F6F6]  border-[0.5px] border-[#828282]" />
-              </div>
-              <div className="flex gap-0">
-                <div className="w-2 h-2 bg-[#F9F6F6]  border-[0.5px] border-[#828282]" />
-                <div className="w-2 h-2 bg-[#828282]" />
-              </div>
-            </motion.div>
-          </div>
+          <CornerBrackets />
 
-          {/* Button Text Container */}
-          <div className="relative overflow-hidden h-6 flex items-center">
-            <motion.span 
-              className="font-impact text-sm sm:text-base lg:text-lg leading-tight tracking-[0.015em] whitespace-nowrap mt-1 text-white"
+          {/* CTA inset: left/right 1.03%, top/bottom 5.26% */}
+          <span className="absolute inset-x-[1.03%] inset-y-[5.26%] flex items-center justify-center gap-[7px] bg-[#EB6601] transition-colors hover:bg-[#d95c00] active:bg-[#c45300]">
+            <span
+              className="inline-flex items-center gap-[7px] uppercase text-white"
               style={{
-                fontFamily: "Impact, sans-serif",
-                fontWeight: 600,
+                fontFamily: "'Impact', sans-serif",
+                fontStyle: "normal",
+                fontWeight: 700,
+                fontSize: "17px",
+                lineHeight: "18px",
+                letterSpacing: "0.03em",
               }}
-              animate={{
-                y: isHovered ? -24 : 0,
-                color: isHovered ? "#282828" : "#FFFFFF",
-                opacity: isHovered ? 0 : 1
-              }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              CLICK TO ENTER
-            </motion.span>
-            
-            {/* Hidden text that slides in from below */}
-            <motion.span 
-              className="absolute font-impact text-sm sm:text-base lg:text-lg leading-tight tracking-[0.015em] whitespace-nowrap text-[#282828] opacity-0"
-              style={{
-                fontFamily: "Impact, sans-serif",
-                fontWeight: 600,
-              }}
-              animate={{
-                y: isHovered ? 0 : 24,
-                opacity: isHovered ? 1 : 0
-              }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            >
-              CLICK TO ENTER
-            </motion.span>
-          </div>
-        </motion.button>
+              LET&apos;S MAKE HISTORY
+              {/* Filled chevron — heavier weight, optically level with Impact caps */}
+              <svg
+                className="shrink-0 -translate-y-[1px]"
+                width="8"
+                height="12"
+                viewBox="0 0 8 12"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <path d="M1.2 0.4L7.2 6L1.2 11.6L0 10.3L4.8 6L0 1.7L1.2 0.4Z" />
+              </svg>
+            </span>
+          </span>
+        </button>
       </div>
     </section>
   );

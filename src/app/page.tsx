@@ -1,47 +1,35 @@
 "use client";
 
-import { useState } from "react";
-import { Navigation } from "@/components/layout/Navigation";
+import { useEffect, useState } from "react";
 import { SplashScreen } from "@/components/sections/SplashScreen";
-import { Hero } from "@/components/sections/Hero";
-import { ReadySection } from "@/components/sections/ReadySection";
-import { ParticipationSection } from "@/components/sections/ParticipationSection";
-import { OrganizersSection } from "@/components/sections/OrganizersSection";
-import { PlatformSection } from "@/components/sections/PlatformSection";
-import { PartnersSection } from "@/components/sections/PartnersSection";
-import { FooterSection } from "@/components/sections/FooterSection";
+import { LandingPage } from "@/components/landing/LandingPage";
 
 export default function Home() {
+  const [ready, setReady] = useState(false);
   const [showMainContent, setShowMainContent] = useState(false);
 
-  const handleEnter = () => {
-    setShowMainContent(true);
-  };
+  useEffect(() => {
+    const hasHash = Boolean(window.location.hash);
+    setShowMainContent(hasHash);
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!showMainContent) return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    const id = hash.slice(1);
+    const t = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [showMainContent]);
+
+  if (!ready) return null;
 
   if (!showMainContent) {
-    return <SplashScreen onEnter={handleEnter} />;
+    return <SplashScreen onEnter={() => setShowMainContent(true)} />;
   }
 
-  return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <main>
-        <Hero />
-        <ReadySection />
-        <section id="participation">
-          <ParticipationSection />
-        </section>
-        <section id="organizers">
-          <OrganizersSection />
-        </section>
-        <section id="platform">
-          <PlatformSection />
-        </section>
-        <section id="partners">
-          <PartnersSection />
-        </section>
-        <FooterSection />
-      </main>
-    </div>
-  );
+  return <LandingPage />;
 }

@@ -1,5 +1,124 @@
 @import "tailwindcss";
 
+/* Exact Figma family names */
+@font-face {
+  font-family: "Chunko Bold Demo";
+  src: url("/fonts/ChunkoBoldDemo.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Impact";
+  src: url("/fonts/Impact.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Patrick Hand SC";
+  src: url("/fonts/PatrickHandSC-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  Figma specifies DIN Next W1G (a licensed Monotype face). These files are Barlow
+  at the same weights so 300/400/700/900 render until the licensed DIN files replace them.
+*/
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/Barlow-300.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/Barlow-400.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/Barlow-700.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/Barlow-900.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.social-card {
+  transform-origin: 50% 100%;
+  transform: rotate(var(--rot)) translateY(0) scale(1);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.45s ease;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+.social-card img {
+  transition: transform 0.45s ease;
+}
+
+.social-card--fan {
+  transform: rotate(var(--rot)) translateY(10px) scale(1);
+}
+
+.social-card:hover {
+  z-index: 30 !important;
+  transform: rotate(calc(var(--rot) * 0.2)) translateY(-28px) scale(1.05);
+  box-shadow: 0 28px 44px rgba(0, 0, 0, 0.28);
+}
+
+.social-card--fan:hover {
+  transform: rotate(calc(var(--rot) * 0.2)) translateY(-18px) scale(1.05);
+}
+
+.social-card:hover img {
+  transform: scale(1.06);
+}
+
+.social-card--stack:hover {
+  transform: rotate(calc(var(--rot) * 0.4)) translateY(-12px) scale(1.02);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.22);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -16,6 +135,7 @@
   --font-manrope: var(--font-manrope);
   --font-bogista: var(--font-bogista);
   --font-impact: var(--font-impact);
+  --font-chunko: var(--font-chunko);
   --font-caesar-dressing: var(--font-caesar-dressing);
   --font-candal: var(--font-candal);
 }
