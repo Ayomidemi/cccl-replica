@@ -64,7 +64,16 @@ export function SocialsSection() {
         })}
       </div>
 
-      {/* Desktop / tablet */}
+      {/* Desktop / tablet — single composite image */}
+      <div className="mx-auto mt-8 hidden w-full max-w-[1100px] items-end justify-center md:flex lg:mt-18">
+        <img
+          src="/images/groupsocials.png"
+          alt="Follow the journey on our socials"
+          className="h-auto w-full object-contain object-bottom"
+        />
+      </div>
+
+      {/* Desktop / tablet — previous fan of individual cards
       <div className="mx-auto mt-8 hidden h-[300px] w-full items-end justify-center md:flex md:h-[380px] lg:mt-10 lg:h-[430px]">
         <div className="flex origin-bottom scale-[0.7] items-end justify-center md:scale-[0.85] lg:scale-100">
           {socials.map((card) => (
@@ -82,6 +91,7 @@ export function SocialsSection() {
           ))}
         </div>
       </div>
+      */}
     </section>
   );
 }
