@@ -19,6 +19,37 @@ function CornerBrackets() {
   );
 }
 
+function HistoryLabel() {
+  return (
+    <span
+      className="inline-flex items-center gap-[7px] uppercase text-white"
+      style={{
+        fontFamily: "'Impact', sans-serif",
+        fontStyle: "normal",
+        fontWeight: 700,
+        fontSize: "17px",
+        lineHeight: "18px",
+        letterSpacing: "0.03em",
+        WebkitTextStroke: "0.6px white",
+        paintOrder: "stroke fill",
+      }}
+    >
+      LET&apos;S MAKE HISTORY
+      <svg
+        className="shrink-0 -translate-y-[1px]"
+        width="8"
+        height="12"
+        viewBox="0 0 8 12"
+        fill="white"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+      >
+        <path d="M1.2 0.4L7.2 6L1.2 11.6L0 10.3L4.8 6L0 1.7L1.2 0.4Z" />
+      </svg>
+    </span>
+  );
+}
+
 export function SplashScreen({ onEnter }: SplashScreenProps) {
   return (
     <section className="relative h-dvh w-full overflow-hidden">
@@ -69,37 +100,22 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
         <button
           type="button"
           onClick={onEnter}
-          className="relative mt-8 h-[57px] w-[min(290px,85vw)] shrink-0 cursor-pointer sm:mt-10 md:mt-12"
+          className="splash-cta relative mt-8 h-[57px] w-[min(290px,85vw)] shrink-0 cursor-pointer sm:mt-10 md:mt-12"
           aria-label="Let's make history"
         >
           <CornerBrackets />
 
-          {/* CTA inset: left/right 1.03%, top/bottom 5.26% */}
-          <span className="absolute inset-x-[1.03%] inset-y-[5.26%] flex items-center justify-center gap-[7px] bg-[#EB6601] transition-colors hover:bg-[#d95c00] active:bg-[#c45300]">
-            <span
-              className="inline-flex items-center gap-[7px] uppercase text-white"
-              style={{
-                fontFamily: "'Impact', sans-serif",
-                fontStyle: "normal",
-                fontWeight: 700,
-                fontSize: "17px",
-                lineHeight: "18px",
-                letterSpacing: "0.03em",
-              }}
-            >
-              LET&apos;S MAKE HISTORY
-              {/* Filled chevron — heavier weight, optically level with Impact caps */}
-              <svg
-                className="shrink-0 -translate-y-[1px]"
-                width="8"
-                height="12"
-                viewBox="0 0 8 12"
-                fill="white"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden
-              >
-                <path d="M1.2 0.4L7.2 6L1.2 11.6L0 10.3L4.8 6L0 1.7L1.2 0.4Z" />
-              </svg>
+          <span className="splash-cta-stage absolute inset-x-[1.03%] inset-y-[5.26%] bg-[#EB6601]">
+            <span className="splash-fill absolute inset-0 bg-[#36C5AE]" aria-hidden />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="relative h-[18px] w-full overflow-hidden">
+                <span className="splash-label splash-label-out absolute inset-0 flex items-center justify-center">
+                  <HistoryLabel />
+                </span>
+                <span className="splash-label splash-label-in absolute inset-0 flex items-center justify-center">
+                  <HistoryLabel />
+                </span>
+              </span>
             </span>
           </span>
         </button>

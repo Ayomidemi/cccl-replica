@@ -186,6 +186,66 @@ body {
   animation: award-roll 12s linear infinite;
 }
 
+.splash-cta {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.splash-cta:hover,
+.splash-cta:focus-visible {
+  transform: scale(1.06);
+}
+
+.splash-cta-stage {
+  overflow: hidden;
+}
+
+.splash-fill {
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.splash-label {
+  transition: transform 0.55s cubic-bezier(0.22, 0.8, 0.28, 1);
+}
+
+.splash-label-in {
+  transform: translateY(110%);
+}
+
+.splash-cta:hover .splash-fill,
+.splash-cta:focus-visible .splash-fill {
+  opacity: 1;
+}
+
+.splash-cta:hover .splash-label-out,
+.splash-cta:focus-visible .splash-label-out {
+  transform: translateY(-110%);
+}
+
+.splash-cta:hover .splash-label-in,
+.splash-cta:focus-visible .splash-label-in {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-cta,
+  .splash-fill,
+  .splash-label {
+    transition: none;
+  }
+
+  .splash-cta:hover,
+  .splash-cta:focus-visible,
+  .splash-cta:hover .splash-label-out,
+  .splash-cta:focus-visible .splash-label-out {
+    transform: none;
+  }
+
+  .splash-label-in {
+    display: none;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
