@@ -27,7 +27,7 @@ export function SiteFooter() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex h-full min-h-[290px] max-w-[1240px] flex-col justify-between px-4 py-10 sm:px-8 lg:px-[100px] lg:py-0">
+      <div className="relative z-10 mx-auto flex h-full min-h-[290px] w-full max-w-[1235px] flex-col justify-between px-4 py-10 sm:px-8 lg:px-0 lg:py-0">
         {/* Figma top ~84px */}
         <div className="flex flex-col items-center justify-between gap-6 lg:mt-[84px] lg:flex-row lg:gap-8">
           <Link href="/">

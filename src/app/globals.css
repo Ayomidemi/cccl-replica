@@ -49,13 +49,17 @@
   font-display: swap;
 }
 
-/*
-  Figma specifies DIN Next W1G (a licensed Monotype face). These files are Barlow
-  at the same weights so 300/400/700/900 render until the licensed DIN files replace them.
-*/
 @font-face {
   font-family: "DIN Next W1G";
-  src: url("/fonts/Barlow-300.ttf") format("truetype");
+  src: url("/fonts/din/DINNextW1G-UltraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/din/DINNextW1G-Light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -63,7 +67,7 @@
 
 @font-face {
   font-family: "DIN Next W1G";
-  src: url("/fonts/Barlow-400.ttf") format("truetype");
+  src: url("/fonts/din/DINNextW1G-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -71,7 +75,15 @@
 
 @font-face {
   font-family: "DIN Next W1G";
-  src: url("/fonts/Barlow-700.ttf") format("truetype");
+  src: url("/fonts/din/DINNextW1G-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/din/DINNextW1G-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -79,7 +91,15 @@
 
 @font-face {
   font-family: "DIN Next W1G";
-  src: url("/fonts/Barlow-900.ttf") format("truetype");
+  src: url("/fonts/din/DINNextW1G-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DIN Next W1G";
+  src: url("/fonts/din/DINNextW1G-Black.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -151,6 +171,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes award-roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.award-roll {
+  animation: award-roll 12s linear infinite;
 }
 
 @keyframes marquee {

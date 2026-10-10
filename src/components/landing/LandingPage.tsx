@@ -74,18 +74,24 @@ function ComingSoon() {
 
 function CalendarIcon() {
   return (
-    <svg width="31" height="31" viewBox="0 0 26 26" fill="none" aria-hidden>
-      <rect x="2" y="4" width="22" height="20" rx="3" fill="#6FD9E5" />
-      <path d="M2 9.5h22" stroke="#1D1C1B" strokeWidth="1.5" />
-      <path
-        d="M8 2.5v4M18 2.5v4"
-        stroke="#6FD9E5"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <rect x="6.5" y="13" width="3.2" height="3.2" rx="0.4" fill="#1D1C1B" />
-      <rect x="11.4" y="13" width="3.2" height="3.2" rx="0.4" fill="#1D1C1B" />
-      <rect x="16.3" y="13" width="3.2" height="3.2" rx="0.4" fill="#1D1C1B" />
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 26 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_4362_1706)">
+        <path
+          d="M0 20.5833C0 23.5701 2.42992 26 5.41667 26H20.5833C23.5701 26 26 23.5701 26 20.5833V10.8333H0V20.5833ZM3.25 16.25C3.25 15.0551 4.22175 14.0833 5.41667 14.0833H7.58333C8.77825 14.0833 9.75 15.0551 9.75 16.25V18.4167C9.75 19.6116 8.77825 20.5833 7.58333 20.5833H5.41667C4.22175 20.5833 3.25 19.6116 3.25 18.4167V16.25ZM7.58442 18.4167H5.41667V16.25H7.58333L7.58442 18.4167ZM26 7.58333V8.66667H0V7.58333C0 4.59658 2.42992 2.16667 5.41667 2.16667H6.5V1.08333C6.5 0.485333 6.98533 0 7.58333 0C8.18133 0 8.66667 0.485333 8.66667 1.08333V2.16667H17.3333V1.08333C17.3333 0.485333 17.8187 0 18.4167 0C19.0147 0 19.5 0.485333 19.5 1.08333V2.16667H20.5833C23.5701 2.16667 26 4.59658 26 7.58333Z"
+          fill="#6FD9E5"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_4362_1706">
+          <rect width="26" height="26" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }
@@ -98,7 +104,17 @@ export function LandingPage() {
       {/* HERO */}
       <header className="relative h-[100svh] min-h-[640px] w-full overflow-hidden lg:h-[722px] lg:min-h-[722px]">
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover md:hidden"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/prelanding.jpg"
+        >
+          <source src="/images/videos/heromobile.mp4" type="video/mp4" />
+        </video>
+        <video
+          className="absolute inset-0 hidden h-full w-full object-cover md:block"
           autoPlay
           muted
           loop
@@ -168,11 +184,11 @@ export function LandingPage() {
             <img
               src="/images/award.png"
               alt=""
-              className="absolute top-0 right-0 hidden h-[110px] w-[110px] rotate-[11deg] object-contain sm:block lg:-top-2 lg:h-[120px] lg:w-[120px]"
+              className="award-roll absolute top-0 right-0 hidden h-[110px] w-[110px] object-contain sm:block lg:-top-2 lg:h-[120px] lg:w-[120px]"
             />
           </div>
 
-          <div className="mt-10 flex items-center gap-2 lg:mt-14">
+          <div className="mt-10 flex items-center gap-2 lg:mt-18">
             <CalendarIcon />
             <p
               style={{
@@ -185,7 +201,7 @@ export function LandingPage() {
                 paddingTop: "5px",
               }}
             >
-              DECEMBER 2026
+              DECEMBER, 2026 SCHEDULE
             </p>
           </div>
 
