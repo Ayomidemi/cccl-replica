@@ -18,7 +18,7 @@ export function SiteFooter() {
         <img
           src="/images/footerbg.png"
           alt=""
-          className="h-full w-full select-none"
+          className="h-full w-full select-none opacity-40"
           style={{
             objectFit: "cover",
             objectPosition: "center bottom",
@@ -27,20 +27,21 @@ export function SiteFooter() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex h-full min-h-[290px] w-full max-w-[1235px] flex-col justify-between px-4 py-10 sm:px-8 lg:px-0 lg:py-0">
-        {/* Figma top ~84px */}
-        <div className="flex flex-col items-center justify-between gap-6 lg:mt-[84px] lg:flex-row lg:gap-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1235px] flex-col items-start gap-[38px] px-[31px] pt-[71px] pb-16 lg:h-full lg:min-h-[290px] lg:justify-between lg:gap-0 lg:px-0 lg:pt-0 lg:pb-0">
+        {/* Mobile: one 38px stack. Desktop: logo / links / socials on one row. */}
+        <div className="contents lg:mt-[84px] lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:gap-8">
           <Link href="/">
             <img
               src="/images/logos/logo.png"
               alt="Lagos International Chess Festival and Chess in Slums Africa"
-              className="h-[42px] w-auto mix-blend-lighten lg:h-[49px]"
+              className="h-[49px] w-auto mix-blend-lighten"
             />
           </Link>
-          <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <nav className="flex flex-col items-start gap-[22px] lg:flex-row lg:items-center lg:gap-8">
             {[
               ["Home", "/"],
               ["About LICF", "/about"],
+              ["FAQs", "/#be-part"],
             ].map(([label, href]) => (
               <Link
                 key={label}
@@ -53,6 +54,7 @@ export function SiteFooter() {
           </nav>
           <div className="flex items-center gap-[10px]">
             <span
+              className="hidden lg:inline"
               style={{
                 fontFamily: JOST,
                 fontWeight: 400,
@@ -82,15 +84,14 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Figma copyright ~204px / built-with ~191px from top */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 pb-6 sm:flex-row lg:mt-0 lg:pb-8">
+        <div className="contents lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:pb-8">
           <p
-            className="text-center sm:text-left"
-            style={{ fontFamily: JOST, fontWeight: 400, fontSize: "16px", lineHeight: "22px" }}
+            className="order-2 max-w-[223px] text-left leading-[25px] lg:order-none lg:max-w-none lg:leading-[22px]"
+            style={{ fontFamily: JOST, fontWeight: 400, fontSize: "16px" }}
           >
             © 2026 LICF. Brought to you by Chess in Slums Africa.
           </p>
-          <div className="flex items-center gap-[6px]">
+          <div className="order-1 flex items-center gap-[6px] lg:order-none">
             <span style={{ fontFamily: JOST, fontWeight: 500, fontSize: "16px", lineHeight: "22px" }}>
               Built with ❤️
             </span>

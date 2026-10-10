@@ -65,14 +65,13 @@ export function AboutPage() {
 
       <main className="mx-auto w-full max-w-[1440px] px-4 pt-28 sm:px-8 lg:px-[220px] lg:pt-[133px]">
         {/* Quote + collage */}
-        <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center gap-7 lg:gap-[29px]">
+        <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center">
           <p
-            className="max-w-[838px] text-center uppercase"
+            className="w-full max-w-[900px] text-left uppercase leading-[34px] sm:text-center sm:leading-[43px]"
             style={{
               fontFamily: PATRICK,
               fontWeight: 400,
               fontSize: "clamp(20px, 2.4vw, 35px)",
-              lineHeight: 1.06,
               color: "#282828",
             }}
           >
@@ -80,7 +79,7 @@ export function AboutPage() {
           </p>
 
           <div
-            className="relative w-full max-w-[1000px]"
+            className="relative -mt-[10px] w-full max-w-[1000px]"
             style={{ aspectRatio: "999 / 782" }}
           >
             {COLLAGE.map((img) => (
@@ -104,7 +103,7 @@ export function AboutPage() {
           {SECTIONS.map((block) => (
             <section
               key={block.title}
-              className="flex w-full flex-col items-center gap-[15px] text-center"
+              className="flex w-full flex-col items-center gap-[20px] text-center"
             >
               <h2
                 style={{

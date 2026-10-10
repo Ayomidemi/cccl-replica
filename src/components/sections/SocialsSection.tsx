@@ -14,8 +14,8 @@ const socials = [
 
 export function SocialsSection() {
   return (
-    <section className="bg-[#F9F4ED] px-4 pt-12 sm:px-8 lg:pt-[91px]">
-      <div className="mx-auto max-w-[540px] text-center">
+    <section className="bg-[#F9F4ED] pt-12 lg:pt-[91px]">
+      <div className="mx-auto max-w-[540px] px-4 text-center sm:px-8">
         <p
           style={{
             fontFamily: DIN,
@@ -40,7 +40,16 @@ export function SocialsSection() {
         </h2>
       </div>
 
-      {/* Mobile: stacked deck */}
+      {/* Mobile: full-bleed composite, no side padding */}
+      <div className="mt-8 w-full md:hidden">
+        <img
+          src="/images/mobilesocials.png"
+          alt="Follow the journey on our socials"
+          className="block h-auto w-full"
+        />
+      </div>
+
+      {/* Mobile: previous stacked deck
       <div className="relative mx-auto mt-10 h-[300px] w-[220px] md:hidden">
         {socials.map((card, i) => {
           const n = socials.length;
@@ -63,6 +72,7 @@ export function SocialsSection() {
           );
         })}
       </div>
+      */}
 
       {/* Desktop / tablet — single composite image */}
       <div className="mx-auto mt-8 hidden w-full max-w-[1100px] items-end justify-center md:flex lg:mt-18">

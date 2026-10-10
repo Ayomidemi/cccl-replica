@@ -44,7 +44,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const bePartHref = "/#be-part";
+  const attendHref = "https://forms.gle/N1hhTjS6UcCFZ9p86";
   const logoClass =
     tone === "light"
       ? "h-[34px] w-auto brightness-0 sm:h-[42px] lg:h-[49px]"
@@ -81,7 +81,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
             <div className="hidden md:block">
               <OffsetButton
-                href={bePartHref}
+                href={attendHref}
                 className="w-[223px]"
                 face="#EB6601"
                 shadow="#14DDBD"
@@ -111,7 +111,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
             className="fixed inset-x-0 top-0 z-40 flex flex-col"
           >
             <div className="relative bg-white shadow-lg">
-              <div className="relative mx-auto flex h-[95px] max-w-[1440px] items-center px-4 sm:px-8 lg:px-[85px]">
+              <div className="relative mx-auto hidden h-[95px] max-w-[1440px] items-center px-4 sm:px-8 md:flex lg:px-[85px]">
                 <div className="flex items-center gap-3 sm:gap-4">
                   <button
                     type="button"
@@ -158,7 +158,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
                 <div className="ml-auto hidden md:block">
                   <OffsetButton
-                    href={bePartHref}
+                    href={attendHref}
                     className="w-[200px] lg:w-[223px]"
                     face="#EB6601"
                     shadow="#14DDBD"
@@ -175,47 +175,121 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-5 border-t border-black/5 px-6 py-5 md:hidden">
-                {[
-                  ["HOME", "/"],
-                  ["ABOUT LICF", "/about"],
-                ].map(([label, href]) => (
-                  <Link
-                    key={label}
-                    href={href}
+              <div className="flex max-h-[100svh] flex-col overflow-y-auto bg-white px-[29px] py-12 md:hidden">
+                <div className="flex items-center gap-[25px]">
+                  <button
+                    type="button"
+                    aria-label="Close menu"
                     onClick={() => setOpen(false)}
-                    className="uppercase"
+                    className="cursor-pointer"
+                  >
+                    <CornerFrame dark>
+                      <CloseIcon />
+                    </CornerFrame>
+                  </button>
+                  <Link href="/" onClick={() => setOpen(false)} className="min-w-0">
+                    <img
+                      src="/images/logos/logo.png"
+                      alt="Lagos International Chess Festival and Chess in Slums Africa"
+                      className="h-[49px] w-auto max-w-full brightness-0"
+                    />
+                  </Link>
+                </div>
+
+                <nav className="mt-[42px] flex flex-col items-start gap-6">
+                  {[
+                    ["HOME", "/"],
+                    ["ABOUT LICF", "/about"],
+                  ].map(([label, href]) => (
+                    <Link
+                      key={label}
+                      href={href}
+                      onClick={() => setOpen(false)}
+                      className="uppercase"
+                      style={{
+                        fontFamily: IMPACT,
+                        fontWeight: 400,
+                        fontSize: "20px",
+                        lineHeight: "25px",
+                        letterSpacing: "0.02em",
+                        color: "#282828",
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="mt-[49px] flex w-full max-w-[372px] flex-col gap-8">
+                  <OffsetButton
+                    href={attendHref}
+                    className="w-full"
+                    face="#EB6601"
+                    shadow="#14DDBD"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span
+                      className="whitespace-nowrap text-[18px]"
+                      style={{ fontFamily: JOST, fontWeight: 700, lineHeight: "18px" }}
+                    >
+                      I&apos;d Love To Attend
+                    </span>
+                    <ButtonArrow />
+                  </OffsetButton>
+                  <OffsetButton
+                    href="#be-part"
+                    className="w-full"
+                    face="#FFFFFF"
+                    shadow="#FEE8A8"
+                    textColor="#282828"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span
+                      className="whitespace-nowrap text-[18px]"
+                      style={{ fontFamily: JOST, fontWeight: 700, lineHeight: "18px" }}
+                    >
+                      Become A Sponsor
+                    </span>
+                    <ButtonArrow />
+                  </OffsetButton>
+                </div>
+
+                <div className="mt-[62px] flex items-center justify-center gap-3">
+                  <span
                     style={{
-                      fontFamily: IMPACT,
+                      fontFamily: JOST,
                       fontWeight: 400,
-                      fontSize: "20px",
-                      letterSpacing: "0.02em",
+                      fontSize: "16px",
+                      lineHeight: "22px",
                       color: "#282828",
                     }}
                   >
-                    {label}
-                  </Link>
-                ))}
-                <OffsetButton
-                  href={bePartHref}
-                  className="w-full max-w-[240px]"
-                  face="#EB6601"
-                  shadow="#14DDBD"
-                  onClick={() => setOpen(false)}
-                >
-                  <span
-                    className="whitespace-nowrap text-[16px]"
-                    style={{ fontFamily: JOST, fontWeight: 700, lineHeight: "18px" }}
-                  >
-                    Register To Attend
+                    Follow the journey:
                   </span>
-                  <ButtonArrow />
-                </OffsetButton>
+                  <a
+                    href="https://twitter.com/chessinslums"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="X"
+                    className="shrink-0"
+                  >
+                    <XIconTeal />
+                  </a>
+                  <a
+                    href="https://instagram.com/chessinslums"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Instagram"
+                    className="shrink-0"
+                  >
+                    <IgIconTeal />
+                  </a>
+                </div>
               </div>
             </div>
 
             <div
-              className="flex h-[41px] w-[min(264px,85vw)] items-center gap-3 bg-black pl-[17px] pr-4"
+              className="hidden h-[41px] w-[min(264px,85vw)] items-center gap-3 bg-black pl-[17px] pr-4 md:flex"
               style={{
                 clipPath: "polygon(0 0, 100% 0, calc(100% - 28px) 100%, 0 100%)",
               }}

@@ -58,8 +58,14 @@ export function OffsetButton({
 
   /* className on the outer control so hidden/md: etc. actually take effect */
   if (href) {
+    const external = href.startsWith("http");
     return (
-      <a href={href} className={`inline-block ${className}`} onClick={onClick}>
+      <a
+        href={href}
+        className={`inline-block ${className}`}
+        onClick={onClick}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         {body}
       </a>
     );

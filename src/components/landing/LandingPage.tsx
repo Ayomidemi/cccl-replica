@@ -1,49 +1,54 @@
 "use client";
 
-import { OffsetButton } from "@/components/ui/OffsetButton";
+import { OffsetButton, ButtonArrow } from "@/components/ui/OffsetButton";
 import { TypewriterLines } from "@/components/ui/TypewriterLines";
 import { SiteNav } from "@/components/layout/SiteNav";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { BePartSection } from "@/components/sections/BePartSection";
 import { SocialsSection } from "@/components/sections/SocialsSection";
 import { ColorStripes } from "@/components/sections/ColorStripes";
+import { StorySection } from "@/components/sections/StorySection";
 
 const DIN = "'DIN Next W1G', sans-serif";
+const JOST = "var(--font-jost), 'Jost', sans-serif";
+const ATTEND_FORM = "https://forms.gle/N1hhTjS6UcCFZ9p86";
 const CABINET = "'Cabinet Grotesk', sans-serif";
 const CHUNKO = "'Chunko Bold Demo', sans-serif";
 const PATRICK = "'Patrick Hand SC', cursive";
-
-const BLURB =
-  "An exclusive, high-level fundraising dinner designed for high-net-worth individuals, partners, and philanthropic leaders. Directly funds Project Castle.";
 
 const events = [
   {
     kicker: "✦ The Experience",
     title: "Chess on a Yacht (Exclusive)",
+    body: "This is where the journey begins. Chess meets the Lagos creative and social scene, with an exclusive evening of chess on a yacht.",
     image: "/images/yatch.png",
     imageLeft: false,
   },
   {
     kicker: "✦ The Experience VOL.2",
     title: "Chess & Art Exhibition (Public)",
+    body: "This is a Chess and Art Exhibition event for the public, where the game and art share the same walls.",
     image: "/images/girl.jpg",
     imageLeft: true,
   },
   {
     kicker: "✦ Schools Chess Competition",
     title: "Primary & Secondary School Tournaments",
+    body: "Young players and schools from across Lagos compete over two tournament days. This is a key step on the journey to the main festival.",
     image: "/images/yatch.png",
     imageLeft: false,
   },
   {
     kicker: "✦ The Corporate Challenge",
     title: "Corporate Chess Tournaments",
+    body: "Professionals from corporate organisations across different industries will meet over the board to play each other in a tournament designed for them. Colleagues become teammates, and the boardroom moves to the chessboard.",
     image: "/images/girl.jpg",
     imageLeft: true,
   },
   {
     kicker: "✦ The Main Festival",
     title: "Lagos International Chess Festival (LICF)",
+    body: "The main festival brings local and international players, children, corporates, creatives, celebrities, delegates and the wider public for the grand finale of the entire journey.",
     image: "/images/yatch.png",
     imageLeft: false,
   },
@@ -125,14 +130,11 @@ export function LandingPage() {
         </video>
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)]" />
 
-        <div className="relative z-10 flex h-full max-w-[1100px] flex-col items-start justify-center gap-6 px-4 pt-16 sm:px-8 lg:gap-[55px] lg:px-[88px] lg:pt-[40px]">
+        <div className="relative z-10 flex h-full max-w-[1100px] flex-col items-start justify-center gap-6 px-[20px] pt-16 sm:px-8 lg:gap-[55px] lg:px-[88px] lg:pt-[40px]">
           <h1
-            className="text-white"
+            className="text-[min(65px,calc((100vw-40px)/6.52))] leading-[1.08] font-[800] text-white md:text-[clamp(72px,9.375vw,135px)] md:leading-[0.96] md:font-[900]"
             style={{
               fontFamily: DIN,
-              fontWeight: 900,
-              fontSize: "clamp(34px, 9.375vw, 135px)",
-              lineHeight: 0.96,
             }}
           >
             <span className="block whitespace-nowrap">Lagos</span>
@@ -140,10 +142,51 @@ export function LandingPage() {
             <span className="block whitespace-nowrap">Chess Festival</span>
           </h1>
           <TypewriterLines />
+          <div className="mt-2 flex w-full max-w-[372px] flex-col gap-8 md:hidden">
+            <OffsetButton
+              href={ATTEND_FORM}
+              className="w-full"
+              face="#EB6601"
+              shadow="#14DDBD"
+            >
+              <span
+                className="whitespace-nowrap text-[18px]"
+                style={{
+                  fontFamily: JOST,
+                  fontWeight: 700,
+                  lineHeight: "18px",
+                }}
+              >
+                I&apos;d Love To Attend
+              </span>
+              <ButtonArrow />
+            </OffsetButton>
+            <OffsetButton
+              href="#be-part"
+              className="w-full"
+              face="#FFFFFF"
+              shadow="#FEE8A8"
+              textColor="#282828"
+            >
+              <span
+                className="whitespace-nowrap text-[18px]"
+                style={{
+                  fontFamily: JOST,
+                  fontWeight: 700,
+                  lineHeight: "18px",
+                }}
+              >
+                Become A Sponsor
+              </span>
+              <ButtonArrow />
+            </OffsetButton>
+          </div>
         </div>
       </header>
 
       <ColorStripes />
+
+      <StorySection />
 
       {/* WHY — headline + schedule share one column width */}
       <section
@@ -270,9 +313,11 @@ export function LandingPage() {
                         lineHeight: "25px",
                       }}
                     >
-                      {BLURB}
+                      {event.body}
                     </p>
-                    <ComingSoon />
+                    <div className="mt-4 sm:mt-6 lg:mt-8">
+                      <ComingSoon />
+                    </div>
                   </div>
                 </article>
               </div>
