@@ -10,9 +10,6 @@ const LINES = [
 
 const CABINET = "'Cabinet Grotesk', sans-serif";
 const TEXT = "#14DDBD";
-/* Figma PNG pixel-read: translucent teal plate behind glyphs
-   (≈ rgb(54,197,174) @ 60%), not a letter text-shadow. */
-const PLATE = "rgba(54, 197, 174, 0.6)";
 
 type TypewriterLinesProps = {
   className?: string;
@@ -60,7 +57,6 @@ export function TypewriterLines({ className = "" }: TypewriterLinesProps) {
           fontSize: "clamp(18px, 2.8vw, 45px)",
           lineHeight: "40px",
           color: TEXT,
-          backgroundColor: charCount > 0 ? PLATE : "transparent",
         }}
         aria-live="polite"
       >
