@@ -10,7 +10,8 @@ export default function Home() {
 
   useEffect(() => {
     const hasHash = Boolean(window.location.hash);
-    setShowMainContent(hasHash);
+    const entered = sessionStorage.getItem("licf-entered") === "1";
+    setShowMainContent(hasHash || entered);
     setReady(true);
   }, []);
 
@@ -28,7 +29,14 @@ export default function Home() {
   if (!ready) return null;
 
   if (!showMainContent) {
-    return <SplashScreen onEnter={() => setShowMainContent(true)} />;
+    return (
+      <SplashScreen
+        onEnter={() => {
+          sessionStorage.setItem("licf-entered", "1");
+          setShowMainContent(true);
+        }}
+      />
+    );
   }
 
   return <LandingPage />;

@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_URL, SOCIAL } from "@/lib/site";
 
 export function JsonLd() {
   const organization = {
@@ -11,8 +11,11 @@ export function JsonLd() {
     description: SITE_DESCRIPTION,
     email: CONTACT_EMAIL,
     sameAs: [
-      "https://instagram.com/chessinslums",
-      "https://twitter.com/chessinslums",
+      SOCIAL.x,
+      SOCIAL.instagram,
+      SOCIAL.tiktok,
+      SOCIAL.youtube,
+      SOCIAL.facebook,
     ],
     parentOrganization: {
       "@type": "Organization",

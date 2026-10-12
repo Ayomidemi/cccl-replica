@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { SOCIAL } from "@/lib/site";
 
 const JOST = "var(--font-jost), 'Jost', sans-serif";
 
@@ -30,7 +33,15 @@ export function SiteFooter() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1235px] flex-col items-start gap-[38px] px-[31px] pt-[71px] pb-16 lg:h-full lg:min-h-[290px] lg:justify-between lg:gap-0 lg:px-0 lg:pt-0 lg:pb-0">
         {/* Mobile: one 38px stack. Desktop: logo / links / socials on one row. */}
         <div className="contents lg:mt-[84px] lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-          <Link href="/">
+          <Link
+            href="/#"
+            onClick={() => {
+              sessionStorage.setItem("licf-entered", "1");
+              if (window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <img
               src="/images/logos/logo.png"
               alt="Lagos International Chess Festival and Chess in Slums Africa"
@@ -39,13 +50,20 @@ export function SiteFooter() {
           </Link>
           <nav className="flex flex-col items-start gap-[22px] lg:flex-row lg:items-center lg:gap-8">
             {[
-              ["Home", "/"],
+              ["Home", "/#"],
               ["About LICF", "/about"],
               ["FAQs", "/#be-part"],
             ].map(([label, href]) => (
               <Link
                 key={label}
                 href={href}
+                onClick={() => {
+                  if (href !== "/#") return;
+                  sessionStorage.setItem("licf-entered", "1");
+                  if (window.location.pathname === "/") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 style={{ fontFamily: JOST, fontWeight: 400, fontSize: "16px", lineHeight: "22px" }}
               >
                 {label}
@@ -65,10 +83,10 @@ export function SiteFooter() {
             >
               Follow the journey:
             </span>
-            <a href="https://instagram.com/chessinslums" aria-label="Instagram" className="text-white">
+            <a href={SOCIAL.instagram} aria-label="Instagram" className="text-white">
               <Ig />
             </a>
-            <a href="https://twitter.com/chessinslums" aria-label="X" className="text-white">
+            <a href={SOCIAL.x} aria-label="X" className="text-white">
               <XIcon />
             </a>
             <a href="https://www.linkedin.com" aria-label="LinkedIn" className="text-white">

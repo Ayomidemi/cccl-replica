@@ -24,3 +24,13 @@ export const SITE_KEYWORDS = [
 ];
 
 export const CONTACT_EMAIL = "info@lagosinternationalchessfestival.com";
+
+export const TWITTER_HANDLE = "@LagosChessFest";
+
+export const SOCIAL = {
+  x: "https://x.com/LagosChessFest",
+  instagram: "https://www.instagram.com/lagoschessfestival/",
+  tiktok: "https://www.tiktok.com/@lagoschessfestival",
+  youtube: "https://www.youtube.com/@LagosChessFestival",
+  facebook: "https://www.facebook.com/profile.php?id=61594900156935",
+} as const;

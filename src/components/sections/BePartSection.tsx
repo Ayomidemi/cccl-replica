@@ -4,7 +4,7 @@ const JOST = "var(--font-jost), 'Jost', sans-serif";
 export function BePartSection() {
   return (
     <section id="be-part" className="bg-[#FCFCFC] px-4 py-16 sm:px-8 lg:py-24">
-      <div className="mx-auto flex max-w-[977px] flex-col items-center text-center">
+      <div className="mx-auto flex max-w-[977px] flex-col items-start text-left sm:items-center sm:text-center">
         <h2
           style={{
             fontFamily: DIN,
@@ -15,7 +15,7 @@ export function BePartSection() {
         >
           Want to be a part of history?
           <br />
-          <span className="inline-flex flex-wrap items-center justify-center gap-3">
+          <span className="inline-flex flex-wrap items-center justify-start gap-3 sm:justify-center">
             Spots are limited, the clock is ticking.
             <span className="inline-flex h-[39px] w-[54px] shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[#ECECEC] bg-white">
               <img
@@ -57,13 +57,15 @@ export function BePartSection() {
             title: "TO SPONSOR THE FESTIVAL EVENTS, TOURNAMENTS & PROJECTS",
             flip: true,
             src: "/images/black-knight.png",
+            email: "partnerships@lagosinternationalchessfestival.com",
           },
           {
             title: "TO BECOME AN EXHIBITOR OR SECURE A SPOT FOR YOUR BRAND",
             flip: false,
             src: "/images/black-bishop.png",
+            email: "info@lagosinternationalchessfestival.com",
           },
-        ].map(({ title, flip, src }) => (
+        ].map(({ title, flip, src, email }) => (
           <article
             key={title}
             className="relative min-h-[330px] rounded-[18px] bg-[#E8E8E8] px-6 pt-6 pb-8"
@@ -95,10 +97,9 @@ export function BePartSection() {
               }}
             >
               <p style={{ fontWeight: 400 }}>Contact:</p>
-              <p className="break-all" style={{ fontWeight: 600 }}>
-                info@lagosinternationalchessfestival.com
-              </p>
-              <p style={{ fontWeight: 600 }}>07033445566, 08012334425</p>
+              <a href={`mailto:${email}`} className="break-all" style={{ fontWeight: 600 }}>
+                {email}
+              </a>
             </div>
           </article>
         ))}

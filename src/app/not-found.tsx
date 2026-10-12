@@ -55,7 +55,7 @@ export default function NotFound() {
           festival while you&apos;re here.
         </p>
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-          <OffsetButton href="/" className="w-[200px]" face="#EB6601" shadow="#14DDBD">
+          <OffsetButton href="/#" className="w-[200px]" face="#EB6601" shadow="#14DDBD">
             <span
               className="whitespace-nowrap text-[16px]"
               style={{ fontFamily: JOST, fontWeight: 700, lineHeight: "18px" }}

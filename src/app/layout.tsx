@@ -17,6 +17,7 @@ import {
   SITE_KEYWORDS,
   SITE_NAME,
   SITE_URL,
+  TWITTER_HANDLE,
 } from "@/lib/site";
 import "./globals.css";
 
@@ -115,9 +116,9 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/images/prelanding.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/coverlandscape.png",
+        width: 1536,
+        height: 1024,
         alt: `${SITE_NAME} — Lagos, Nigeria`,
       },
     ],
@@ -126,9 +127,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ["/images/prelanding.jpg"],
-    creator: "@chessinslums",
-    site: "@chessinslums",
+    images: ["/images/coverlandscape.png"],
+    creator: TWITTER_HANDLE,
+    site: TWITTER_HANDLE,
   },
   alternates: {
     canonical: SITE_URL,

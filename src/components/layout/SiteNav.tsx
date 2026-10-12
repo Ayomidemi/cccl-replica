@@ -5,9 +5,18 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Hamburger } from "@/components/ui/Icons";
 import { OffsetButton, ButtonArrow } from "@/components/ui/OffsetButton";
+import { SOCIAL } from "@/lib/site";
 
 const JOST = "var(--font-jost), 'Jost', sans-serif";
 const IMPACT = "'Impact', sans-serif";
+const HOME_HREF = "/#";
+
+function goHome() {
+  sessionStorage.setItem("licf-entered", "1");
+  if (window.location.pathname === "/") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
 
 function CornerFrame({ children, dark }: { children: ReactNode; dark?: boolean }) {
   return (
@@ -69,7 +78,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 </CornerFrame>
               </button>
               {!scrolled && (
-                <Link href="/">
+                <Link href={HOME_HREF} onClick={goHome}>
                   <img
                     src="/images/logos/logo.png"
                     alt="Lagos International Chess Festival"
@@ -123,7 +132,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                       <CloseIcon />
                     </CornerFrame>
                   </button>
-                  <Link href="/" onClick={() => setOpen(false)}>
+                  <Link href={HOME_HREF} onClick={() => { setOpen(false); goHome(); }}>
                     <img
                       src="/images/logos/logo.png"
                       alt="Lagos International Chess Festival"
@@ -134,13 +143,16 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
                 <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-10 md:flex">
                   {[
-                    ["HOME", "/"],
+                    ["HOME", HOME_HREF],
                     ["ABOUT LICF", "/about"],
                   ].map(([label, href]) => (
                     <Link
                       key={label}
                       href={href}
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setOpen(false);
+                        if (href === HOME_HREF) goHome();
+                      }}
                       className="text-center uppercase"
                       style={{
                         fontFamily: IMPACT,
@@ -187,7 +199,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                       <CloseIcon />
                     </CornerFrame>
                   </button>
-                  <Link href="/" onClick={() => setOpen(false)} className="min-w-0">
+                  <Link href={HOME_HREF} onClick={() => { setOpen(false); goHome(); }} className="min-w-0">
                     <img
                       src="/images/logos/logo.png"
                       alt="Lagos International Chess Festival and Chess in Slums Africa"
@@ -198,13 +210,16 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
                 <nav className="mt-[42px] flex flex-col items-start gap-6">
                   {[
-                    ["HOME", "/"],
+                    ["HOME", HOME_HREF],
                     ["ABOUT LICF", "/about"],
                   ].map(([label, href]) => (
                     <Link
                       key={label}
                       href={href}
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setOpen(false);
+                        if (href === HOME_HREF) goHome();
+                      }}
                       className="uppercase"
                       style={{
                         fontFamily: IMPACT,
@@ -267,7 +282,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                     Follow the journey:
                   </span>
                   <a
-                    href="https://twitter.com/chessinslums"
+                    href={SOCIAL.x}
                     target="_blank"
                     rel="noreferrer"
                     aria-label="X"
@@ -276,7 +291,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                     <XIconTeal />
                   </a>
                   <a
-                    href="https://instagram.com/chessinslums"
+                    href={SOCIAL.instagram}
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Instagram"
@@ -307,7 +322,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 Follow the journey:
               </span>
               <a
-                href="https://twitter.com/chessinslums"
+                href={SOCIAL.x}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="X"
@@ -316,7 +331,7 @@ export function SiteNav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 <XIconTeal />
               </a>
               <a
-                href="https://instagram.com/chessinslums"
+                href={SOCIAL.instagram}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"

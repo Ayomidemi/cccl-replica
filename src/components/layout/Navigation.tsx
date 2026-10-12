@@ -9,6 +9,7 @@ import {
   TicketIcon,
 } from "@/components/ui/ChessIcons";
 import { Hamburger, Instagram, LinkedIn, Mail, Twitter } from "../ui/Icons";
+import { SOCIAL } from "@/lib/site";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,12 +45,12 @@ export function Navigation() {
   const socialIcons = [
     {
       icon: Twitter,
-      href: "https://twitter.com/chessinslums",
+      href: SOCIAL.x,
       target: "_blank",
     },
     {
       icon: Instagram,
-      href: "https://instagram.com/chessinslums",
+      href: SOCIAL.instagram,
       target: "_blank",
     },
     {

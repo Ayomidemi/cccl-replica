@@ -11,7 +11,14 @@ export const metadata: Metadata = {
     description:
       "Learn what LICF is, why Lagos, and how chess brings together education, innovation, culture and social impact in Nigeria.",
     url: `${SITE_URL}/about`,
-    images: [{ url: "/images/about/about2.jpg", alt: "Chess in Slums Africa teaching chess in Lagos" }],
+    images: [
+      {
+        url: "/images/coverlandscape.png",
+        width: 1536,
+        height: 1024,
+        alt: `${SITE_NAME} — Lagos, Nigeria`,
+      },
+    ],
   },
   alternates: {
     canonical: `${SITE_URL}/about`,
