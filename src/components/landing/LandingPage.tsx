@@ -109,24 +109,24 @@ export function LandingPage() {
       {/* HERO */}
       <header className="relative h-[100svh] min-h-[640px] w-full overflow-hidden lg:h-[722px] lg:min-h-[722px]">
         <video
-          className="absolute inset-0 h-full w-full object-cover md:hidden"
+          className="absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           poster="/images/prelanding.jpg"
         >
-          <source src="/images/videos/heromobile.mp4" type="video/mp4" />
-        </video>
-        <video
-          className="absolute inset-0 hidden h-full w-full object-cover md:block"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/prelanding.jpg"
-        >
-          <source src="/images/videos/herovideo.mp4" type="video/mp4" />
+          <source
+            src="/images/videos/heromobile.mp4"
+            type="video/mp4"
+            media="(max-width: 767px)"
+          />
+          <source
+            src="/images/videos/herovideo.mp4"
+            type="video/mp4"
+            media="(min-width: 768px)"
+          />
         </video>
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)]" />
 
