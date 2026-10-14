@@ -79,12 +79,11 @@ function ComingSoon() {
 
 function CalendarIcon() {
   return (
-    <svg
-      width="26"
-      height="26"
+      <svg
       viewBox="0 0 26 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6 shrink-0 md:h-[26px] md:w-[26px]"
     >
       <g clipPath="url(#clip0_4362_1706)">
         <path
@@ -191,53 +190,59 @@ export function LandingPage() {
       {/* WHY — headline + schedule share one column width */}
       <section
         id="about"
-        className="relative bg-[#1D1C1B] px-4 pt-14 pb-16 text-white sm:px-8 lg:px-[178px] lg:pt-[140px] lg:pb-[140px]"
+        className="relative bg-[#1D1C1B] px-[27px] pt-[65px] pb-16 text-white md:px-8 md:pt-14 lg:px-[178px] lg:pt-[140px] lg:pb-[140px]"
       >
         <div className="mx-auto w-full max-w-[1200px]">
-          <div className="relative flex flex-col items-start gap-[25px] pr-0 sm:pr-[100px] lg:pr-[140px]">
+          <div className="relative flex flex-col items-start gap-7 pr-0 md:gap-[25px] md:pr-[100px] lg:pr-[140px]">
             <div className="flex items-center gap-[10px]">
-              <span className="h-px w-5 bg-white" />
+              <span className="hidden h-px w-5 bg-white md:block" />
               <p
+                className="w-[233px] text-[18px] leading-[24px] md:w-auto md:text-[clamp(16px,2vw,22px)]"
                 style={{
                   fontFamily: PATRICK,
                   fontWeight: 400,
-                  fontSize: "clamp(16px, 2vw, 22px)",
-                  lineHeight: "24px",
                 }}
               >
                 a year-long festival of Experience, Culture, and Innovation
               </p>
-              <span className="h-px w-5 bg-white" />
+              <span className="hidden h-px w-5 bg-white md:block" />
             </div>
             <h2
-              className="flex w-full max-w-[1046px] flex-wrap gap-x-[0.28em]"
-              style={{
-                fontFamily: DIN,
-                fontWeight: 900,
-                fontSize: "clamp(32px, 8.5vw, 100px)",
-                lineHeight: 1,
-              }}
+              className="max-w-[339px] text-[65px] leading-[70px] font-[750] md:flex md:w-full md:max-w-[1046px] md:flex-wrap md:gap-x-[0.28em] md:text-[clamp(32px,8.5vw,100px)] md:leading-none md:font-[900]"
+              style={{ fontFamily: DIN }}
             >
-              {"You Don't Want To Miss Out, Here's Why"
-                .split(" ")
-                .map((word, i) => (
-                  <span key={`${word}-${i}`}>{word}</span>
-                ))}
+              <span className="md:hidden">
+                You Don&apos;t
+                <br />
+                Want To
+                <br />
+                Miss Out,
+                <br />
+                Here&apos;s Why
+              </span>
+              <span className="hidden md:contents">
+                {"You Don't Want To Miss Out, Here's Why"
+                  .split(" ")
+                  .map((word, i) => (
+                    <span key={`${word}-${i}`}>{word}</span>
+                  ))}
+              </span>
             </h2>
             <img
               src="/images/award.png"
               alt=""
-              className="award-roll absolute top-0 right-0 hidden h-[110px] w-[110px] object-contain sm:block lg:-top-2 lg:h-[120px] lg:w-[120px]"
+              className="award-roll absolute top-[2px] right-[22px] h-[70px] w-[70px] object-contain md:top-0 md:right-0 md:h-[110px] md:w-[110px] lg:-top-2 lg:h-[120px] lg:w-[120px]"
             />
           </div>
 
-          <div className="mt-10 flex items-center gap-2 lg:mt-18">
+          <div className="mt-10 flex items-center gap-[10px] lg:mt-18">
             <CalendarIcon />
             <p
+              className="whitespace-nowrap"
               style={{
                 fontFamily: CHUNKO,
                 fontWeight: 400,
-                fontSize: "clamp(22px, 3vw, 35px)",
+                fontSize: "clamp(18px, 5.2vw, 35px)",
                 letterSpacing: "0.04em",
                 color: "#6FD9E5",
                 lineHeight: "31px",
@@ -252,13 +257,14 @@ export function LandingPage() {
             {events.map((event, index) => (
               <div key={event.title} className="w-full">
                 {index === 2 && (
-                  <div className="mt-8 flex items-center gap-2 lg:mt-14 mb-8">
+                  <div className="mt-8 mb-8 flex items-center gap-[10px] lg:mt-14">
                     <CalendarIcon />
                     <p
+                      className="whitespace-nowrap"
                       style={{
                         fontFamily: CHUNKO,
                         fontWeight: 400,
-                        fontSize: "clamp(20px, 2.6vw, 35px)",
+                        fontSize: "clamp(18px, 5.2vw, 35px)",
                         letterSpacing: "0.04em",
                         color: "#6FD9E5",
                         lineHeight: "31px",

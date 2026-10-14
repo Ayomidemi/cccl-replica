@@ -3,26 +3,38 @@ const JOST = "var(--font-jost), 'Jost', sans-serif";
 
 export function BePartSection() {
   return (
-    <section id="be-part" className="bg-[#FCFCFC] px-4 py-16 sm:px-8 lg:py-24">
+    <section id="be-part" className="bg-[#FCFCFC] px-[22px] py-16 sm:px-8 lg:py-24">
       <div className="mx-auto flex max-w-[977px] flex-col items-start text-left sm:items-center sm:text-center">
         <h2
-          style={{
-            fontFamily: DIN,
-            fontWeight: 700,
-            fontSize: "clamp(28px, 4vw, 55px)",
-            lineHeight: 1.36,
-          }}
+          className="max-w-[347px] text-[40px] leading-[47px] font-[750] sm:max-w-none sm:text-[clamp(28px,4vw,55px)] sm:leading-[1.36] sm:font-[700]"
+          style={{ fontFamily: DIN }}
         >
-          Want to be a part of history?
-          <br />
-          <span className="inline-flex flex-wrap items-center justify-start gap-3 sm:justify-center">
-            Spots are limited, the clock is ticking.
-            <span className="inline-flex h-[39px] w-[54px] shrink-0 items-center justify-center overflow-hidden rounded-[8px] border border-[#ECECEC] bg-white">
-              <img
-                src="/images/videos/clock.gif"
-                alt=""
-                className="h-full w-full object-cover"
-              />
+          <span className="sm:hidden">
+            Want to be a part of history? Spots are limited, the{" "}
+            <span className="whitespace-nowrap">
+              clock is ticking.
+              <span className="ml-2 inline-flex h-[39px] w-[54px] items-center justify-center overflow-hidden rounded-[8px] border border-[#ECECEC] bg-white align-middle">
+                <img
+                  src="/images/videos/clock.gif"
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </span>
+            </span>
+          </span>
+          <span className="hidden sm:inline">
+            Want to be a part of history?
+            <br />
+            Spots are limited, the clock is{" "}
+            <span className="whitespace-nowrap">
+              ticking.
+              <span className="ml-3 inline-flex h-[39px] w-[54px] translate-y-[6px] items-center justify-center overflow-hidden rounded-[8px] border border-[#ECECEC] bg-white align-middle">
+                <img
+                  src="/images/videos/clock.gif"
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </span>
             </span>
           </span>
         </h2>

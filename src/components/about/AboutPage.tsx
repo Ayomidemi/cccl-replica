@@ -28,7 +28,13 @@ const SECTIONS = [
 ];
 
 /* Figma collage — coords relative to 999×782 parent frame */
-const COLLAGE = [
+const COLLAGE: {
+  src: string;
+  alt: string;
+  className: string;
+  z: number;
+  objectPosition?: string;
+}[] = [
   {
     src: "/images/about/about1.jpg",
     alt: "Chess in Slums Africa team with the Nigerian flag",
@@ -47,6 +53,7 @@ const COLLAGE = [
     src: "/images/about/about4.jpg",
     alt: "Guinness World Record celebration",
     className: "left-0 top-[62%] w-[37%] aspect-[371/296]",
+    objectPosition: "center top",
     z: 3,
   },
   {
@@ -78,10 +85,7 @@ export function AboutPage() {
             {QUOTE}
           </p>
 
-          <div
-            className="relative -mt-[10px] w-full max-w-[1000px]"
-            style={{ aspectRatio: "999 / 782" }}
-          >
+          <div className="relative -mx-4 -mt-6 aspect-[430/347] w-[calc(100%+2rem)] sm:-mx-8 sm:-mt-8 sm:w-[calc(100%+4rem)] md:mx-0 md:aspect-[999/782] md:w-full md:max-w-[1000px] lg:-mt-10">
             {COLLAGE.map((img) => (
               <div
                 key={img.src}
@@ -92,6 +96,7 @@ export function AboutPage() {
                   src={img.src}
                   alt={img.alt}
                   className="h-full w-full object-cover"
+                  style={{ objectPosition: img.objectPosition ?? "center" }}
                 />
               </div>
             ))}
